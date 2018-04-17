@@ -110,6 +110,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 	String flagId;
 	String flSolution;
 	String siteUrl, urlToShare;
+	LinearLayout scoreAndCoins;
 
 	Animation animBlink, animShake, animShakeLetter, animZoomIn, animZoomOut;
 	// MediaPlayer sound;
@@ -124,7 +125,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	LinearLayout rightHelps;
 	RelativeLayout layout;
-	TextView scoreTitle, scoreValue, coinsX, coinsValue;
+	TextView coinsX, coinsValue;
 
 	ImageButton hide, letter, solution;
 
@@ -185,6 +186,19 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 		cd = new ConnectionDetector(GameActivity.this);
 
+		scoreAndCoins = (LinearLayout)findViewById(R.id.scoreAndCoins);
+		scoreAndCoins.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+
+				sou.playSound(R.raw.buttons);
+				Intent intent = new Intent(GameActivity.this, ShopActivity.class);
+				startActivity(intent);
+
+			}
+		});
+
 		imgLoader = new ImageLoader(getApplicationContext());
 
 		AdView ad = (AdView) findViewById(R.id.adView);
@@ -221,15 +235,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 		layout = (RelativeLayout) findViewById(R.id.titleBar);
 
 		if (getResources().getString(R.string.langDirection).equals("rtl")) {
-			LinearLayout scoreLayout = (LinearLayout) layout.findViewById(R.id.scoreLayout);
-			ArrayList<View> scoreViews = new ArrayList<View>();
-			for (int z = 0; z < scoreLayout.getChildCount(); z++) {
-				scoreViews.add(scoreLayout.getChildAt(z));
-			}
-			scoreLayout.removeAllViews();
-			for (int z = scoreViews.size() - 1; z >= 0; z--) {
-				scoreLayout.addView(scoreViews.get(z));
-			}
 
 			LinearLayout coinsLayout = (LinearLayout) layout.findViewById(R.id.coinsLayout);
 			ArrayList<View> coinsViews = new ArrayList<View>();
@@ -244,19 +249,12 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 		Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/" + getResources().getString(R.string.main_font));
 
-		scoreTitle = (TextView) layout.findViewById(R.id.scoreTitle);
-		scoreTitle.setText(getResources().getString(R.string.score));
-		scoreTitle.setTypeface(tf);
 
 		if (getResources().getString(R.string.langDirection).equals("rtl")) {
 			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 			lp.setMargins(7, 0, 0, 0);
-			scoreTitle.setLayoutParams(lp);
 		}
 
-		scoreValue = (TextView) layout.findViewById(R.id.scoreValue);
-		scoreValue.setTypeface(tf);
-		scoreValue.setText(String.valueOf(getTotalScoreNumber()));
 
 		coinsX = (TextView) layout.findViewById(R.id.coinsX);
 		coinsX.setTypeface(tf);
@@ -273,7 +271,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 		spacesGrid1 = (LinearLayout) findViewById(R.id.spacesGrid1);
 		spacesGrid2 = (LinearLayout) findViewById(R.id.spacesGrid2);
-		
+
 		lettersGrid = (GridView) findViewById(R.id.lettersGrid);
 
 		flImage = (ImageView) findViewById(R.id.flag);
@@ -1182,13 +1180,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 	}
 
 	// ==============================================================================
-
-	public int getTotalScoreNumber() {
-		Cursor cScore = db.getTotalScore();
-
-		int totalScore = cScore.getInt(cScore.getColumnIndex("total_score"));
-		return totalScore;
-	}
 
 	// ==============================================================================
 

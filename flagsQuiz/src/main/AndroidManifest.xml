@@ -3,11 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nileworx.flagsquiz"
     android:versionCode="7"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
-    <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="26" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,25 +12,28 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
-        tools:replace="android:label"
         android:largeHeap="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
         <meta-data
             android:name="com.google.android.gms.version"
+            tools:replace="android:value"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
+            tools:replace="android:value"
             android:value="@string/app_id" />
 
         <activity
-            android:name="com.nileworx.flagsquiz.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,29 +41,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.nileworx.flagsquiz.UpdatesDialogActivity"
+            android:name=".UpdatesDialogActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Dialog" >
-        </activity>
+            android:theme="@android:style/Theme.Dialog"></activity>
         <activity
-            android:name="com.nileworx.flagsquiz.GameActivity"
+            android:name=".GameActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-            android:name="com.nileworx.flagsquiz.SettingsActivity"
+            android:name=".SettingsActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ShopActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+
+
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
-        <service android:name="com.nileworx.flagsquiz.GetUpdatesService" >
-        </service>
-        <service android:name="com.nileworx.flagsquiz.CheckUpdatesService" >
-        </service>
+        <service android:name=".GetUpdatesService"></service>
+        <service android:name=".CheckUpdatesService"></service>
+
+
     </application>
 
 </manifest>

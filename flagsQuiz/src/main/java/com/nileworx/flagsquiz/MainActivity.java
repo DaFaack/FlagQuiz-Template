@@ -17,6 +17,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -61,9 +62,9 @@ public class MainActivity extends Activity {
 		double screenInches = Math.sqrt(x + y);
 		
 		if (sWidth > 480 && screenInches >= 4 && screenInches <= 5) {
-			setContentView(R.layout.activity_main_4x);			
+			setContentView(R.layout.activity_main);
 		} else if (screenInches > 6.5 && screenInches < 9) {
-			setContentView(R.layout.activity_main_7x);			
+			setContentView(R.layout.activity_main);
 		} else {
 			setContentView(R.layout.activity_main);
 		}			
@@ -162,6 +163,27 @@ public class MainActivity extends Activity {
 			}
 		});
 
+
+		final Button insta = (Button) findViewById(R.id.insta);
+		insta.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+					return;
+				}
+				mLastClickTime = SystemClock.elapsedRealtime();
+				sou.playSound(R.raw.buttons);
+
+				Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+				sharingIntent.setType("text/plain");
+				String shareMessage = getResources().getString(R.string.shareDlgMessage) + marketLink;
+				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getResources().getString(R.string.shareDlgSubject));
+				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareMessage);
+				startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.shareDlgTitle)));
+
+			}
+		});
+
 		final ImageButton rate = (ImageButton) findViewById(R.id.rate);
 		rate.setOnClickListener(new OnClickListener() {
 			@Override
@@ -195,6 +217,18 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				sou.playSound(R.raw.buttons);
 				Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+				startActivity(intent);
+
+			}
+		});
+
+
+		final Button shop = (Button) findViewById(R.id.shop);
+		shop.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				sou.playSound(R.raw.buttons);
+				Intent intent = new Intent(MainActivity.this, ShopActivity.class);
 				startActivity(intent);
 
 			}

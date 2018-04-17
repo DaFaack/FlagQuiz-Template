@@ -65,12 +65,23 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/button_settings_main" />
 
+            <Button
+                android:id="@+id/shop"
+                android:layout_width="160dp"
+                android:layout_height="55dp"
+                android:text="Shop"
+                android:textSize="30sp"
+                android:layout_marginTop="7dp"
+                android:textStyle="bold"/>
+
+
             <ImageButton
                 android:id="@+id/exit"
                 android:layout_width="160dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/button_exit_main" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -80,11 +91,12 @@
             android:gravity="center"
             android:orientation="vertical" >
 
-            <ImageButton
-                android:id="@+id/leaderboard"
+            <Button
+                android:id="@+id/insta"
                 android:layout_width="50dp"
+                android:text="Insta"
                 android:layout_height="50dp"
-                android:background="@drawable/button_leaderboard_main" />
+                android:background="#ffffff" />
 
             <ImageButton
                 android:id="@+id/sound"

@@ -8,8 +8,7 @@
     <RelativeLayout
         android:id="@+id/titleBarTop"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/title_bar_top" >
+        android:layout_height="60dp" >
 
         <ImageButton
             android:id="@+id/back"
@@ -21,16 +20,43 @@
             android:layout_margin="5dip"
             android:background="@drawable/button_back_game" />
 
+
+        <LinearLayout
+            android:id="@+id/titleLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dip"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal" >
+
+
+            <TextView
+                android:id="@+id/level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Level: "
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#FFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="LEVELS"
+            android:text="1"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#FFF"
             android:textSize="25sp"
             android:textStyle="bold" />
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/scoreAndCoins"
@@ -38,39 +64,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:background="#dc3434"
             android:orientation="vertical" >
 
-            <LinearLayout
-                android:id="@+id/scoreLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="2dip"
-                android:gravity="center"
-                android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/scoreTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
-                    android:shadowColor="#f35054"
-                    android:text="Score"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#faf337"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/scoreValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="000"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/coinsLayout"
@@ -85,8 +82,8 @@
 
                 <ImageView
                     android:id="@+id/coinsImg"
-                    android:layout_width="20dp"
-                    android:layout_height="25dp"
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/coins" />
 
                 <TextView
@@ -95,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dip"
                     android:text="x "
-                    android:textSize="18sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -104,18 +101,11 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/titleBarBottom"
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:layout_below="@+id/titleBarTop"
-        android:background="@drawable/title_bar_bottom" >
-    </RelativeLayout>
 
 </RelativeLayout>
