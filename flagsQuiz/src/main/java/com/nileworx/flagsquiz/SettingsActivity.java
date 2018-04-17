@@ -70,7 +70,7 @@ public class SettingsActivity extends Activity {
 		TextView title = (TextView) layout.findViewById(R.id.title);
 		title.setText(getResources().getString(R.string.settingsTitle).toUpperCase());
 
-		LinearLayout scoreAndCoins = (LinearLayout) layout.findViewById(R.id.scoreAndCoins);
+		RelativeLayout scoreAndCoins = (RelativeLayout) layout.findViewById(R.id.scoreAndCoins);
 		scoreAndCoins.setVisibility(View.GONE);
 
 		final RelativeLayout sound = (RelativeLayout) findViewById(R.id.sound);

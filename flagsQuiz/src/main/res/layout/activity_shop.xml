@@ -19,7 +19,7 @@
         android:orientation="vertical" >
 
         <RelativeLayout
-            android:id="@+id/sound"
+            android:id="@+id/video"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -27,30 +27,11 @@
 
 
             <TextView
-                android:id="@+id/soundText"
+                android:id="@+id/videoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Watch a Video + 10 Coins"
-                android:textColor="#FFF"
-                android:textSize="18sp"
-                android:textStyle="bold" >
-            </TextView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/vibrate"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/button_setting_settings_sml" >
-
-            <TextView
-                android:id="@+id/vibrateText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Rate with 5 Starts +10 Coins"
                 android:textColor="#FFF"
                 android:textSize="18sp"
                 android:textStyle="bold" >
@@ -66,6 +47,25 @@
 
             <TextView
                 android:id="@+id/rateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Rate with 5 Starts +10 Coins"
+                android:textColor="#FFF"
+                android:textSize="18sp"
+                android:textStyle="bold" >
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/follow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_setting_settings_sml" >
+
+            <TextView
+                android:id="@+id/followText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -97,7 +97,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/check"
+            android:id="@+id/iap1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -105,7 +105,7 @@
 
 
             <TextView
-                android:id="@+id/checkText"
+                android:id="@+id/iap1Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -117,14 +117,14 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/reset"
+            android:id="@+id/iap2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:background="@drawable/button_setting_settings_sml" >
 
             <TextView
-                android:id="@+id/resetText"
+                android:id="@+id/iap2Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -136,14 +136,14 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/money1"
+            android:id="@+id/iap3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:background="@drawable/button_setting_settings_sml" >
 
             <TextView
-                android:id="@+id/money11"
+                android:id="@+id/iap3Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -155,13 +155,13 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/money2"
+            android:id="@+id/iap4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_setting_settings_sml" >
 
             <TextView
-                android:id="@+id/money22"
+                android:id="@+id/iap4Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

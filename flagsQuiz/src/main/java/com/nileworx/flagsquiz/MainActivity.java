@@ -313,7 +313,7 @@ public class MainActivity extends Activity {
 		if (cu.getCount() != 0) {
 
 			do {
-				db.addFlags2(cu.getString(cu.getColumnIndex("fl_name")), cu.getString(cu.getColumnIndex("fl_country")), cu.getString(cu.getColumnIndex("fl_city")), cu.getString(cu.getColumnIndex("fl_wikipedia")), cu.getInt(cu.getColumnIndex("fl_order")), cu.getInt(cu.getColumnIndex("fl_web_id")));
+				db.addFlags2(cu.getString(cu.getColumnIndex("fl_name")), cu.getString(cu.getColumnIndex("fl_country")), cu.getString(cu.getColumnIndex("fl_city")), cu.getInt(cu.getColumnIndex("fl_order")), cu.getInt(cu.getColumnIndex("fl_web_id")));
 			} while (cu.moveToNext());
 		}
 	}

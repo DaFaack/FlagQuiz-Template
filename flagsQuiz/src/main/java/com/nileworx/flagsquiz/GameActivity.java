@@ -110,7 +110,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 	String flagId;
 	String flSolution;
 	String siteUrl, urlToShare;
-	LinearLayout scoreAndCoins;
+	RelativeLayout scoreAndCoins;
 
 	Animation animBlink, animShake, animShakeLetter, animZoomIn, animZoomOut;
 	// MediaPlayer sound;
@@ -125,7 +125,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	LinearLayout rightHelps;
 	RelativeLayout layout;
-	TextView coinsX, coinsValue;
+	TextView coinsValue;
 
 	ImageButton hide, letter, solution;
 
@@ -186,7 +186,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 		cd = new ConnectionDetector(GameActivity.this);
 
-		scoreAndCoins = (LinearLayout)findViewById(R.id.scoreAndCoins);
+		scoreAndCoins = (RelativeLayout)findViewById(R.id.scoreAndCoins);
 		scoreAndCoins.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -255,9 +255,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 			lp.setMargins(7, 0, 0, 0);
 		}
 
-
-		coinsX = (TextView) layout.findViewById(R.id.coinsX);
-		coinsX.setTypeface(tf);
 
 		coinsValue = (TextView) layout.findViewById(R.id.coinsValue);
 		coinsValue.setTypeface(tf);

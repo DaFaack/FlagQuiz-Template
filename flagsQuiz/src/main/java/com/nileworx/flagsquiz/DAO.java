@@ -24,7 +24,6 @@ public class DAO {
 
 	private static final String FL_ID = "_flid";
 	private static final String FL_IMAGE = "fl_image";
-	private static final String FL_WIKIPEDIA = "fl_wikipedia";
 	private static final String FL_COMPLETED = "fl_completed";
 	private static final String FL_POINTS = "fl_points";
 	private static final String FL_TRIES = "fl_tries";
@@ -305,19 +304,8 @@ public class DAO {
 
 	// ==============================================================================
 
-	public String getFlagWikipedia(String flID) {
-		String query = "SELECT " + FL_WIKIPEDIA + " FROM " + TABLE_FLAGS + " WHERE " + FL_ID + " = " + flID;
 
-		Cursor cursor = database.rawQuery(query, null);
-
-		cursor.moveToFirst();
-		return cursor.getString(cursor.getColumnIndex(FL_WIKIPEDIA));
-
-	}
-
-	// ==============================================================================
-
-	public void addFlag(String fl_name, String fl_country, String fl_city, int fl_is_country, String fl_image, String fl_wikipedia, int fl_web_id) {
+	public void addFlag(String fl_name, String fl_country, String fl_city, int fl_is_country, String fl_image, int fl_web_id) {
 		open();
 		ContentValues v = new ContentValues();
 		v.put("fl_name", fl_name);
@@ -325,7 +313,6 @@ public class DAO {
 		v.put("fl_city", fl_city);
 		v.put("fl_is_country", fl_is_country);
 		v.put("fl_image", fl_image);
-		v.put("fl_wikipedia", fl_wikipedia);
 		v.put("fl_tries", 0);
 		v.put("fl_score", 0);
 		v.put("fl_points", 0);
@@ -351,7 +338,7 @@ public class DAO {
 	}
 
 	//
-	public void addFlags2(String fl_name, String fl_country, String fl_city, String fl_wikipedia, int fl_order, int fl_web_id) {
+	public void addFlags2(String fl_name, String fl_country, String fl_city, int fl_order, int fl_web_id) {
 		open();
 		ContentValues v = new ContentValues();
 		v.put("fl_name", fl_name);
@@ -363,7 +350,6 @@ public class DAO {
 			v.put("fl_is_country", 0);
 		}
 		v.put("fl_image", "0" + String.valueOf(fl_order) + ".jpg");
-		v.put("fl_wikipedia", fl_wikipedia);
 		v.put("fl_tries", 0);
 		v.put("fl_score", 0);
 		v.put("fl_points", 0);
@@ -389,14 +375,12 @@ public class DAO {
 	//
 	// }
 	//
-	// public void addFlags2(String fl_name, int fl_level, String fl_wikipedia,
 	// String fl_info, String fl_player, int fl_id) {
 	//
 	// ContentValues v = new ContentValues();
 	// v.put("fl_name", fl_name);
 	// v.put("fl_image", String.valueOf(fl_id) + ".png");
 	// v.put("fl_level", fl_level);
-	// v.put("fl_wikipedia", fl_wikipedia);
 	// v.put("fl_info", fl_info);
 	// v.put("fl_player", fl_player);
 	// v.put("fl_tries", 0);
