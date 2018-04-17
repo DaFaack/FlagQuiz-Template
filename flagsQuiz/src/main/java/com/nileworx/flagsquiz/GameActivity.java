@@ -122,13 +122,13 @@ public class GameActivity extends Activity implements OnTouchListener {
 	SharedPreferences mSharedPreferences;
 	Editor e;
 
-	LinearLayout leftHelps, rightHelps;
+	LinearLayout rightHelps;
 	RelativeLayout layout;
 	TextView scoreTitle, scoreValue, coinsX, coinsValue;
 
-	ImageButton facebook, twitter, hide, letter, solution;
+	ImageButton hide, letter, solution;
 
-	ImageView flImage, flLargeImage;
+	ImageView flImage;
 
 	LayoutInflater layoutInflater;
 	View popuplayout;
@@ -168,13 +168,13 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 		if (sWidth > 480 && screenInches >= 4 && screenInches <= 5) {
 //			Log.e("if", "1");
-			setContentView(R.layout.activity_game_4x);
+			setContentView(R.layout.activity_game);
 		} else if (screenInches >= 5 && screenInches <= 6.5) {
 //			Log.e("if", "2");
-			setContentView(R.layout.activity_game_5x);
+			setContentView(R.layout.activity_game);
 		} else if (screenInches > 6.5 && screenInches < 9) {
 //			Log.e("if", "3");
-			setContentView(R.layout.activity_game_7x);
+			setContentView(R.layout.activity_game);
 		} else {
 //			Log.e("if", "4");
 			setContentView(R.layout.activity_game);
@@ -265,8 +265,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 		coinsValue.setTypeface(tf);
 		coinsValue.setText(String.valueOf(getCoinsNumber()));
 
-		facebook = (ImageButton) findViewById(R.id.facebook);
-		twitter = (ImageButton) findViewById(R.id.twitter);
 		hide = (ImageButton) findViewById(R.id.hide);
 		letter = (ImageButton) findViewById(R.id.letter);
 		solution = (ImageButton) findViewById(R.id.solution);
@@ -279,9 +277,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 		lettersGrid = (GridView) findViewById(R.id.lettersGrid);
 
 		flImage = (ImageView) findViewById(R.id.flag);
-		flLargeImage = (ImageView) findViewById(R.id.flLargeImage);
 
-		leftHelps = (LinearLayout) findViewById(R.id.leftHelps);
 		rightHelps = (LinearLayout) findViewById(R.id.rightHelps);
 
 		c = db.getOneFlag(flagId);
@@ -319,7 +315,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 				}
 				Bitmap bmp = BitmapFactory.decodeStream(istr);
 				flImage.setImageBitmap(bmp);
-				flLargeImage.setImageBitmap(bmp);
 			} else {
 
 				siteUrl = getResources().getString(R.string.siteUrl);
@@ -327,7 +322,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 				flImageDir = siteUrl + "global/uploads/flags/";
 
 				imgLoader.DisplayImage(flImageDir + flImageFile, flImage);
-				imgLoader.DisplayImage(flImageDir + flImageFile, flLargeImage);
 
 			}
 
@@ -387,11 +381,8 @@ public class GameActivity extends Activity implements OnTouchListener {
 					}
 				}, 0);
 
-				leftHelps.setVisibility(View.VISIBLE);
 				rightHelps.setVisibility(View.VISIBLE);
 
-				facebook.setOnClickListener(helpClickHandler);
-				twitter.setOnClickListener(helpClickHandler);
 				hide.setOnClickListener(helpClickHandler);
 				letter.setOnClickListener(helpClickHandler);
 				solution.setOnClickListener(helpClickHandler);
@@ -409,41 +400,10 @@ public class GameActivity extends Activity implements OnTouchListener {
 			}
 		});
 
-		final RelativeLayout largeImageLayout = (RelativeLayout) findViewById(R.id.flLargeImageLayout);
-		flImage.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				largeImageLayout.setVisibility(View.VISIBLE);
-				animZoomIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_in);
-				largeImageLayout.setAnimation(animZoomIn);
-			}
-		});
 
-		largeImageLayout.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
 
-				animZoomOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_out);
-				largeImageLayout.startAnimation(animZoomOut);
-				largeImageLayout.setVisibility(View.GONE);
-				animZoomOut.setAnimationListener(new Animation.AnimationListener() {
-					@Override
-					public void onAnimationStart(Animation animation) {
 
-					}
 
-					@Override
-					public void onAnimationEnd(Animation animation) {
-						largeImageLayout.clearAnimation();
-					}
-
-					@Override
-					public void onAnimationRepeat(Animation animation) {
-
-					}
-				});
-			}
-		});
 
 		setButtonsStateForUsedHelps();
 	}
@@ -864,13 +824,11 @@ public class GameActivity extends Activity implements OnTouchListener {
 	public void getHelp(final int viewId) {
 		int remainCoins = Integer.parseInt(coinsValue.getText().toString());
 		if (isHelpUsed(viewId) != 1) {
-			boolean noFacebookCoins = (viewId == R.id.facebook && remainCoins < 5);
-			boolean noTwitterCoins = (viewId == R.id.twitter && remainCoins < 5);
 			boolean noHideCoins = (viewId == R.id.hide && remainCoins < 5);
 			boolean noLetterCoins = (viewId == R.id.letter && remainCoins < 5);
 			boolean noSolutionCoins = (viewId == R.id.solution && remainCoins < 10);
 
-			if (noFacebookCoins || noTwitterCoins || noHideCoins || noLetterCoins || noSolutionCoins) {
+			if (noHideCoins || noLetterCoins || noSolutionCoins) {
 
 				dialog.showDialog(R.layout.blue_dialog, "noCoinsDlg", getResources().getString(R.string.noCoinsDlg), null);
 
@@ -879,13 +837,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 				String msg = "";
 
 				switch (viewId) {
-				case R.id.facebook:
-					msg = getResources().getString(R.string.facebookHelpDlg);
-					break;
-
-				case R.id.twitter:
-					msg = getResources().getString(R.string.twitterHelpDlg);
-					break;
 				case R.id.hide:
 					msg = getResources().getString(R.string.hideHelpDlg);
 					break;
@@ -915,12 +866,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 		c = db.getHelpState(flagId);
 		if (c.getCount() != 0) {
 			switch (viewId) {
-			case R.id.facebook:
-				state = c.getInt(c.getColumnIndex("he_facebook"));
-				break;
-			case R.id.twitter:
-				state = c.getInt(c.getColumnIndex("he_twitter"));
-				break;
 			case R.id.hide:
 				state = c.getInt(c.getColumnIndex("he_hide"));
 				break;
@@ -953,13 +898,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 				letter.setEnabled(false);
 			}
 
-			if (c.getInt(c.getColumnIndex("he_facebook")) == 1) {
-				facebook.setAlpha(140);
-			}
-
-			if (c.getInt(c.getColumnIndex("he_twitter")) == 1) {
-				twitter.setAlpha(140);
-			}
 		}
 	}
 
@@ -968,34 +906,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 	public void executeHelp(int viewId) {
 
 		switch (viewId) {
-
-		case R.id.facebook:
-			db.updateHelpState(flagId, "he_facebook");
-
-			urlToShare = siteUrl + "site/show_level/" + String.valueOf(flWebId);
-
-			Intent fIntent = new Intent(Intent.ACTION_SEND);
-			fIntent.setType("text/plain");
-			fIntent.putExtra(Intent.EXTRA_TEXT, urlToShare);
-
-			String sharerUrl = "https://www.facebook.com/sharer/sharer.php?u=" + urlToShare;
-			fIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(sharerUrl));
-
-			startActivity(fIntent);
-			break;
-
-		case R.id.twitter:
-			db.updateHelpState(flagId, "he_twitter");
-
-			urlToShare = siteUrl + "site/show_flag/" + String.valueOf(flWebId);
-
-			Intent tTntent = new Intent(Intent.ACTION_SEND);
-
-			String tweetUrl = String.format("https://twitter.com/intent/tweet?text=%s", urlEncode(getResources().getString(R.string.twitterHelpMessage) + " " + urlToShare));
-			tTntent = new Intent(Intent.ACTION_VIEW, Uri.parse(tweetUrl));
-
-			startActivity(tTntent);
-			break;
 
 		case R.id.hide:
 

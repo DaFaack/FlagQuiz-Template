@@ -341,12 +341,6 @@ public class CustomDialog {
 
 				String coins = "0";
 				switch (act.globalViewId) {
-				case R.id.facebook:
-					coins = "5";
-					break;
-				case R.id.twitter:
-					coins = "5";
-					break;
 				case R.id.hide:
 					coins = "5";
 					break;
