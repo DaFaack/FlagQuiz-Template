@@ -30,12 +30,41 @@
                 android:id="@+id/soundText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Watch a Video + 10 Coins"
+                android:layout_centerHorizontal="true"
+                android:text="Watch a Video"
                 android:textColor="#FFF"
                 android:textSize="18sp"
                 android:textStyle="bold" >
             </TextView>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/soundText">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/coins"/>
+
+                <TextView
+                    android:id="@+id/asd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="#FFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" >
+                </TextView>
+
+
+
+            </LinearLayout>
+
+
         </RelativeLayout>
 
         <RelativeLayout
