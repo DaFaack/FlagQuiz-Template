@@ -1,14 +1,18 @@
 package com.nileworx.flagsquiz;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
@@ -36,12 +40,17 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 
 public class ShopActivity extends Activity {
+    SaveData sv = new SaveData();
 
+    //VideoAD
     Button btn_videoAd;
     private RewardedVideoAd mRewardedVideoAd;
 
 
-
+    //rate App
+    Button btn_rate_app;
+    ConnectionDetector cd;
+    TextView rateText;
 
 
 
@@ -64,7 +73,12 @@ public class ShopActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
+
+        //initialisation
         btn_videoAd = (Button)findViewById(R.id.btn_videoAd);
+        btn_rate_app = (Button)findViewById(R.id.btn_rate_app);
+        rateText = (TextView)findViewById(R.id.rateText);
+
         btn_videoAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,12 +129,21 @@ public class ShopActivity extends Activity {
 
             }
         });
-
-
         loadRewardedVideoAd();
 
+        btn_rate_app.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btn_rate_click();
+            }
+        });
 
 
+
+        if(sv.getBoolean("rate_used", getApplicationContext())){
+            btn_rate_app.setBackgroundResource(R.drawable.button_shop_diabled);
+            rateText.setAlpha(0.5f);
+        }
 
 
 
@@ -217,4 +240,68 @@ public class ShopActivity extends Activity {
                 new AdRequest.Builder().build());
     }
 
+
+    public void btn_rate_click(){
+        cd = new ConnectionDetector(ShopActivity.this);
+        if(cd.isConnectingToInternet()&&!sv.getBoolean("rate_used", getApplicationContext())){
+            Log.i("###","connected");
+
+            Uri uriUrl = Uri.parse(getText(R.string.link_to_app).toString());
+            Intent openUrl = new Intent(Intent.ACTION_VIEW, uriUrl);
+            startActivity(openUrl);
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    btn_rate_app.setBackgroundResource(R.drawable.button_shop_diabled);
+                    rateText.setAlpha(0.5f);
+
+                    sv.saveBoolean("rate_used", true, getApplicationContext());
+
+                    AlertDialog.Builder a_builder;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        a_builder = new AlertDialog.Builder(ShopActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+                    } else {
+                        a_builder = new AlertDialog.Builder(ShopActivity.this);
+                    }
+                    a_builder.setMessage("Thanks for your rating, you received 200 coins !")
+                            .setCancelable(true)
+                            .setPositiveButton("thanks", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert = a_builder.create();
+                    alert.setTitle("well done");
+                    alert.show();
+                }
+            }, 8000);
+
+
+
+        }else if(!cd.isConnectingToInternet()&&!sv.getBoolean("rate_used", getApplicationContext())){
+            AlertDialog.Builder a_builder;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                a_builder = new AlertDialog.Builder(ShopActivity.this, android.R.style.Theme_Material_Dialog_Alert);
+            } else {
+                a_builder = new AlertDialog.Builder(ShopActivity.this);
+            }
+            a_builder.setMessage("Please check your interent connection to be able to give a rating")
+                    .setCancelable(true)
+                    .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = a_builder.create();
+            alert.setTitle("No internet connection");
+            alert.show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "You can only submit a rating once", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
