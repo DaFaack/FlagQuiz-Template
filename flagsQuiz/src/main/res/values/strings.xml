@@ -9,7 +9,17 @@
     <string name="flags_score_leaderboard">xxxxxxx</string>
     <string name="langDirection">ltr</string>
 
+
+
+    <!--new stuff e.g. links, preise, variable werte-->
     <string name="link_to_app">https://play.google.com/store/apps/details?id=com.pentasounds.fortniteguessthewordquiz</string>
+    <string name="videoAdID">ca-app-pub-3940256099942544/5224354917</string>
+
+        <!--coins-->
+    <string name="coins_for_videeoad">10</string>
+    <string name="coins_for_rating">10</string>
+    <string name="coins_for_insta">10</string>
+    <string name="coins_for_share">10</string>
 
     <!-- =========================== Language =========================== -->
 

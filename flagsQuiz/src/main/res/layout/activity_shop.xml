@@ -76,12 +76,20 @@
         <RelativeLayout
             android:id="@+id/follow"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/button_setting_settings_sml" >
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp">
+
+
+
+            <Button
+                android:id="@+id/btn_instagram"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_setting_settings_sml"/>
+
 
             <TextView
-                android:id="@+id/followText"
+                android:id="@+id/instaText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -95,13 +103,20 @@
         <RelativeLayout
             android:id="@+id/share"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/button_setting_settings_sml" >
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp">
+
+
+
+            <Button
+                android:id="@+id/btn_share"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_setting_settings_sml"/>
 
 
             <TextView
-                android:id="@+id/shareText"
+                android:id="@+id/share_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -111,6 +126,7 @@
                 android:textStyle="bold" >
             </TextView>
         </RelativeLayout>
+
 
         <RelativeLayout
             android:id="@+id/iap1"
