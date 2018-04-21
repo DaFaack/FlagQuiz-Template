@@ -211,6 +211,9 @@ public class ShopActivity extends Activity {
         RelativeLayout scoreAndCoins = (RelativeLayout) layout.findViewById(R.id.scoreAndCoins);
         scoreAndCoins.setVisibility(View.GONE);
 
+        TextView level = (TextView) layout.findViewById(R.id.level);
+        level.setVisibility(View.GONE);
+
 
 
 
