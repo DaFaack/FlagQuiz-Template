@@ -95,6 +95,17 @@
                 android:background="@drawable/help_clicked"
                 android:scaleType="fitXY"
                 android:src="@drawable/button_solution_game" />
+
+
+
+            <ImageButton
+                android:id="@+id/videoAd"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/help_clicked"
+                android:scaleType="fitXY"
+                android:src="@drawable/video_ad_icon" />
         </LinearLayout>
 
 
