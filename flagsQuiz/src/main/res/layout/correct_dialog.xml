@@ -45,7 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/correctDlg"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-12dp"
         android:orientation="horizontal"
         android:visibility="visible" >
 
@@ -55,12 +54,6 @@
             android:layout_height="34dp"
             android:background="@drawable/button_dlg_main" />
 
-        <Button
-            android:id="@+id/wikipediaBtn"
-            android:layout_width="70dp"
-            android:layout_height="34dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/button_dlg_wikipedia" />
 
         <Button
             android:id="@+id/nextBtn"

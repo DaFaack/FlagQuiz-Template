@@ -7,14 +7,14 @@
         		android:endColor="#e06201"
        			android:startColor="#f78e3e"               
                 android:angle="270" />
-            <corners
-                android:radius="10dp" />
-            <padding
-                android:left="5dp"
-                android:top="5dp"
-                android:right="5dp"
-                android:bottom="5dp" />
-        </shape>
+    <corners
+        android:radius="10dp" />
+    <padding
+        android:left="5dp"
+        android:top="5dp"
+        android:right="5dp"
+        android:bottom="5dp" />
+</shape>
     </item>
     <item android:state_pressed="false">
         <shape>

@@ -380,7 +380,6 @@ public class CustomDialog {
 	private void correctDlg(final Dialog dialog, final String flagId) {
 		int nextFlag = db.getNextFlag();
 		final String nextFlagId = String.valueOf(nextFlag);
-		final String flWikipedia = db.getFlagWikipedia(flagId);
 
 		Button mainBtn = (Button) dialog.findViewById(R.id.mainBtn);
 		// if button is clicked, close the custom dialog
@@ -396,21 +395,6 @@ public class CustomDialog {
 				context.startActivity(intent);
 			}
 		});
-
-		Button wikipediaBtn = (Button) dialog.findViewById(R.id.wikipediaBtn);
-		if (!flWikipedia.equals("") && flWikipedia != null && URLUtil.isValidUrl(flWikipedia)) {
-
-			wikipediaBtn.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Uri uri = Uri.parse(flWikipedia);
-					Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-					context.startActivity(intent);
-				}
-			});
-		} else {
-			wikipediaBtn.setVisibility(View.GONE);
-		}
 
 		Button nextBtn = (Button) dialog.findViewById(R.id.nextBtn);
 		// if button is clicked, close the custom dialog

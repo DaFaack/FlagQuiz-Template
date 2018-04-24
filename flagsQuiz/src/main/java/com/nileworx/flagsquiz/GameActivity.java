@@ -56,6 +56,10 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.nileworx.flagsquiz.R;
 
 public class GameActivity extends Activity implements OnTouchListener {
@@ -110,7 +114,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 	String flagId;
 	String flSolution;
 	String siteUrl, urlToShare;
-	LinearLayout scoreAndCoins;
+	RelativeLayout scoreAndCoins;
 
 	Animation animBlink, animShake, animShakeLetter, animZoomIn, animZoomOut;
 	// MediaPlayer sound;
@@ -125,10 +129,12 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	LinearLayout rightHelps;
 	RelativeLayout layout;
-	TextView coinsX, coinsValue;
+	TextView coinsValue;
 
-	ImageButton hide, letter, solution;
+	ImageButton hide, letter, solution, videoAd;
 
+	private RewardedVideoAd mRewardedVideoAd;
+	boolean videoAdHelper;
 	ImageView flImage;
 
 	LayoutInflater layoutInflater;
@@ -148,11 +154,15 @@ public class GameActivity extends Activity implements OnTouchListener {
 	double screenInches;
 	private long mLastClickTime = 0;
 
+	SimpleMethods sm = new SimpleMethods();
+
 	// ==============================================================================
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+
 
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
@@ -186,7 +196,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 		cd = new ConnectionDetector(GameActivity.this);
 
-		scoreAndCoins = (LinearLayout)findViewById(R.id.scoreAndCoins);
+		scoreAndCoins = (RelativeLayout)findViewById(R.id.scoreAndCoins);
 		scoreAndCoins.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -256,9 +266,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 		}
 
 
-		coinsX = (TextView) layout.findViewById(R.id.coinsX);
-		coinsX.setTypeface(tf);
-
 		coinsValue = (TextView) layout.findViewById(R.id.coinsValue);
 		coinsValue.setTypeface(tf);
 		coinsValue.setText(String.valueOf(getCoinsNumber()));
@@ -266,6 +273,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 		hide = (ImageButton) findViewById(R.id.hide);
 		letter = (ImageButton) findViewById(R.id.letter);
 		solution = (ImageButton) findViewById(R.id.solution);
+		videoAd = (ImageButton)findViewById(R.id.videoAd);
 
 		// spacesGrid = (GridView) findViewById(R.id.spacesGrid);
 
@@ -384,6 +392,70 @@ public class GameActivity extends Activity implements OnTouchListener {
 				hide.setOnClickListener(helpClickHandler);
 				letter.setOnClickListener(helpClickHandler);
 				solution.setOnClickListener(helpClickHandler);
+
+
+				videoAd.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Log.i("###", " vdieoAD clicked");
+						if (mRewardedVideoAd.isLoaded()) {
+							mRewardedVideoAd.show();
+						}
+					}
+				});
+
+
+				mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
+				mRewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
+					@Override
+					public void onRewardedVideoAdLoaded() {
+
+					}
+
+					@Override
+					public void onRewardedVideoAdOpened() {
+
+					}
+
+					@Override
+					public void onRewardedVideoStarted() {
+
+					}
+
+					@Override
+					public void onRewardedVideoAdClosed() {
+						if(videoAdHelper){
+							db.addTotalCoins(10);
+							coinsValue.setText(String.valueOf(getCoinsNumber()));
+							sm.playSound(R.raw.rewardsound, getApplicationContext());
+						}
+						videoAdHelper = false;
+						mRewardedVideoAd.loadAd(getText(R.string.videoAdID).toString(),
+								new AdRequest.Builder().build());
+					}
+
+					@Override
+					public void onRewarded(RewardItem rewardItem) {
+						videoAdHelper =true;
+					}
+
+					@Override
+					public void onRewardedVideoAdLeftApplication() {
+
+					}
+
+					@Override
+					public void onRewardedVideoAdFailedToLoad(int i) {
+
+					}
+
+					@Override
+					public void onRewardedVideoCompleted() {
+
+					}
+				});
+				mRewardedVideoAd.loadAd(getText(R.string.videoAdID).toString(),
+						new AdRequest.Builder().build());
 				// }
 			}
 

@@ -188,7 +188,7 @@ public class GetUpdatesService extends IntentService {
 						String fl_image = e.getString("fl_image");						
 						String fl_wikipedia = e.getString("fl_wikipedia");						
 
-						db.addFlag(fl_name, fl_country, fl_city, fl_is_country, fl_image, fl_wikipedia, Integer.parseInt(_flid));
+						db.addFlag(fl_name, fl_country, fl_city, fl_is_country, fl_image, Integer.parseInt(_flid));
 
 						++mCount;
 
