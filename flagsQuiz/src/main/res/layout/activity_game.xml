@@ -4,55 +4,41 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/background_gameactivity"
     android:padding="0dp" >
 
     <include layout="@layout/title_bar" />
 
 
-    <RelativeLayout
-        android:id="@+id/topLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleBar"
-        android:layout_marginTop="15dp" >
 
     <LinearLayout
         android:id="@+id/flagLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@id/spacesGrid1"
+        android:layout_below="@+id/titleBar"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="vertical" >
 
         <ImageView
             android:id="@+id/flag"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:padding="9dp" />
     </LinearLayout>
-    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/spacesGrid1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/spacesGrid2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:gravity="center"
+        android:layout_above="@id/boost"
         android:orientation="horizontal" >
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/spacesGrid2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/boost"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:orientation="horizontal" >
-    </LinearLayout>
 
 
     <RelativeLayout
@@ -83,6 +69,7 @@
                 android:id="@+id/letter"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/help_clicked"
                 android:scaleType="fitXY"
@@ -92,6 +79,7 @@
                 android:id="@+id/solution"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/help_clicked"
                 android:scaleType="fitXY"
                 android:src="@drawable/button_solution_game" />
@@ -102,10 +90,11 @@
                 android:id="@+id/videoAd"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:layout_marginLeft="45dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/help_clicked"
                 android:scaleType="fitXY"
-                android:src="@drawable/video_ad_icon" />
+                android:src="@drawable/rewardedvideo_icon_game" />
         </LinearLayout>
 
 
@@ -128,7 +117,7 @@
         android:listSelector="@drawable/letter_grid_selector"
         android:numColumns="8"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="3dp" />
+        android:verticalSpacing="10dp" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

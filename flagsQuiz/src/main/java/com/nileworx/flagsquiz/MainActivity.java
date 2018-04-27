@@ -116,100 +116,8 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		final ImageButton sound = (ImageButton) findViewById(R.id.sound);
-
-		if (mSharedPreferences.getInt("sound", 1) == 1) {
-			sound.setBackgroundResource(R.drawable.button_sound_on_main);
-		} else {
-			sound.setBackgroundResource(R.drawable.button_sound_off_main);
-		}
-
-		sound.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-				if (mSharedPreferences.getInt("sound", 1) == 1) {
-					e.putInt("sound", 0);
-					e.commit();
-					sound.setBackgroundResource(R.drawable.button_sound_off_main);
-				} else {
-					e.putInt("sound", 1);
-					e.commit();
-					sound.setBackgroundResource(R.drawable.button_sound_on_main);
-
-					sou.playSound(R.raw.buttons);
-				}
-				// e.commit(); // save changes
-			}
-		});
-
-		final ImageButton share = (ImageButton) findViewById(R.id.share);
-		share.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-					return;
-				}
-				mLastClickTime = SystemClock.elapsedRealtime();
-				sou.playSound(R.raw.buttons);
-
-				Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-				sharingIntent.setType("text/plain");
-				String shareMessage = getResources().getString(R.string.shareDlgMessage) + marketLink;
-				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getResources().getString(R.string.shareDlgSubject));
-				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareMessage);
-				startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.shareDlgTitle)));
-
-			}
-		});
 
 
-		final Button insta = (Button) findViewById(R.id.insta);
-		insta.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-					return;
-				}
-				mLastClickTime = SystemClock.elapsedRealtime();
-				sou.playSound(R.raw.buttons);
-
-				Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-				sharingIntent.setType("text/plain");
-				String shareMessage = getResources().getString(R.string.shareDlgMessage) + marketLink;
-				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getResources().getString(R.string.shareDlgSubject));
-				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareMessage);
-				startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.shareDlgTitle)));
-
-			}
-		});
-
-		final ImageButton rate = (ImageButton) findViewById(R.id.rate);
-		rate.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-					return;
-				}
-				mLastClickTime = SystemClock.elapsedRealtime();
-				sou.playSound(R.raw.buttons);
-
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-
-				intent.setData(Uri.parse("market://details?id=" + getPackageName()));
-
-				if (!MyStartActivity(intent)) {
-					// Market (Google play) app seems not installed, let's try
-					// to open a webbrowser
-					intent.setData(Uri.parse(marketLink));
-					if (!MyStartActivity(intent)) {
-						// Well if this also fails, we have run out of options,
-						// inform the user.
-						Toast.makeText(MainActivity.this, getResources().getString(R.string.noGooglePlayMessage), Toast.LENGTH_LONG).show();
-					}
-				}
-			}
-		});
 
 		final ImageButton settings = (ImageButton) findViewById(R.id.settings);
 		settings.setOnClickListener(new OnClickListener() {
@@ -223,7 +131,7 @@ public class MainActivity extends Activity {
 		});
 
 
-		final Button shop = (Button) findViewById(R.id.shop);
+		final ImageButton shop = (ImageButton) findViewById(R.id.shop);
 		shop.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

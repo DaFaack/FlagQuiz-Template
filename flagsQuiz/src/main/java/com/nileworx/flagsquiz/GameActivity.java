@@ -67,7 +67,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 	GridView lettersGrid;
 	String marketLink;
 
-	LinearLayout spacesGrid1, spacesGrid2;
+	LinearLayout spacesGrid1;
 	TextView[] spaceViews;
 
 	LettersAdapter leAdapter;
@@ -278,7 +278,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 		// spacesGrid = (GridView) findViewById(R.id.spacesGrid);
 
 		spacesGrid1 = (LinearLayout) findViewById(R.id.spacesGrid1);
-		spacesGrid2 = (LinearLayout) findViewById(R.id.spacesGrid2);
+		//spacesGrid2 = (LinearLayout) findViewById(R.id.spacesGrid2);
 
 		lettersGrid = (GridView) findViewById(R.id.lettersGrid);
 
@@ -586,10 +586,10 @@ public class GameActivity extends Activity implements OnTouchListener {
 			}
 
 			// add to layout
-			if (i < 8) {
+			if (i < 15) {
 				spacesGrid1.addView(spaceViews[i]);
-			} else if (i < 16) {
-				spacesGrid2.addView(spaceViews[i]);
+			} else if (i > 15) {
+				Toast.makeText(GameActivity.this, "Mehr als 14 Zeichen", Toast.LENGTH_LONG).show();
 			}
 			// else if (i < 24) {
 			// spacesGrid3.addView(spaceViews[i]);
@@ -1327,7 +1327,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 //		spacesGrid2.startAnimation(animation);	
 		
 		spacesGrid1.setRotation(180.0f);
-		spacesGrid2.setRotation(180.0f);	
 
 	}
 
