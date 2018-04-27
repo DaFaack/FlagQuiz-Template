@@ -8,6 +8,39 @@
 
     <include layout="@layout/title_bar" />
 
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:id="@+id/coinfield"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/coins"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:maxWidth="35dp" />
+
+
+    </LinearLayout>
+
+
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
@@ -15,7 +48,7 @@
         android:layout_above="@+id/adView"
         android:layout_below="@+id/titleBar"
         android:layout_margin="10dp"
-        android:gravity="top"
+        android:gravity="center"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -126,8 +159,6 @@
                 android:textStyle="bold" >
             </TextView>
         </RelativeLayout>
-
-
 
 
     </LinearLayout>

@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -59,7 +60,6 @@ public class ShopActivity extends Activity {
     DAO db;
     Cursor c;
 
-    UpdateClass update;
     SoundClass sou;
     CustomDialog dialog;
     private long mLastClickTime = 0;
@@ -186,7 +186,7 @@ public class ShopActivity extends Activity {
             btn_insta.setBackgroundResource(R.drawable.button_shop_diabled);
             tv_insta.setAlpha(0.5f);
         }
-
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/" + getResources().getString(R.string.main_font));
 
 
         dialog = new CustomDialog(ShopActivity.this);
@@ -214,7 +214,9 @@ public class ShopActivity extends Activity {
         TextView level = (TextView) layout.findViewById(R.id.level);
         level.setVisibility(View.GONE);
 
-
+        TextView coinfield = (TextView) findViewById(R.id.coinfield);
+        coinfield.setTypeface(tf);
+        coinfield.setText(String.valueOf(getCoinsNumber()));
 
 
         ImageButton back = (ImageButton) layout.findViewById(R.id.back);
@@ -261,6 +263,12 @@ public class ShopActivity extends Activity {
 
 
 
+    public int getCoinsNumber() {
+        Cursor cCoins = db.getCoinsCount();
+
+        int coinsNumber = cCoins.getInt(cCoins.getColumnIndex("total_coins")) - cCoins.getInt(cCoins.getColumnIndex("used_coins"));
+        return coinsNumber;
+    }
 
 
 

@@ -39,7 +39,6 @@ public class SettingsActivity extends Activity {
 	DAO db;
 	Cursor c;
 
-	UpdateClass update;
 	SoundClass sou;
 	CustomDialog dialog;
 	private long mLastClickTime = 0;
@@ -209,23 +208,7 @@ public class SettingsActivity extends Activity {
 			}
 		});
 
-		final RelativeLayout checkUpdates = (RelativeLayout) findViewById(R.id.check);
-		final TextView checkUpdatesText = (TextView) findViewById(R.id.checkText);
-		checkUpdatesText.setText(getResources().getString(R.string.checkBtn));
-		
-		checkUpdates.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-					return;
-				}
-				mLastClickTime = SystemClock.elapsedRealtime();
-				sou.playSound(R.raw.buttons);
-				update = new UpdateClass(SettingsActivity.this);
-				update.handleUpdates();
 
-			}
-		});
 
 		final RelativeLayout reset = (RelativeLayout) findViewById(R.id.reset);
 		final TextView resetText = (TextView) findViewById(R.id.resetText);
@@ -257,9 +240,7 @@ public class SettingsActivity extends Activity {
 		if (getResources().getString(R.string.langDirection).equals("rtl")) {
 			ImageView soundImage = (ImageView) findViewById(R.id.soundImage);
 			ImageView vibrateImage = (ImageView) findViewById(R.id.vibrateImage);
-			ImageView rateImage = (ImageView) findViewById(R.id.rateImage);
 			ImageView shareImage = (ImageView) findViewById(R.id.shareImage);
-			ImageView checkImage = (ImageView) findViewById(R.id.checkImage);
 			ImageView resetImage = (ImageView) findViewById(R.id.resetImage);
 			
 			RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) soundImage.getLayoutParams();
@@ -267,9 +248,7 @@ public class SettingsActivity extends Activity {
 
 			soundImage.setLayoutParams(params);
 			vibrateImage.setLayoutParams(params);
-			rateImage.setLayoutParams(params);
 			shareImage.setLayoutParams(params);
-			checkImage.setLayoutParams(params);
 			resetImage.setLayoutParams(params);
 		}
 		
