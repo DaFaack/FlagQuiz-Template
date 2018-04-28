@@ -86,14 +86,22 @@
       <sourceFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/generated/res/rs/androidTest/debug" type="java-test-resource" />
       <sourceFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/generated/res/resValues/androidTest/debug" type="java-test-resource" />
       <sourceFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/generated/source/apt/test/debug" isTestSource="true" generated="true" />
+      <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/assets" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/blame" />
+      <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/check-manifest" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/classes" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/incremental" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/javaPrecompile" />
+      <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/jniLibs" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/manifests" />
+      <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/multi-dex" />
+      <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/prebuild" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/res" />
+      <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/rs" />
+      <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/shaders" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/splits-support" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/symbols" />
+      <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/intermediates/transforms" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/outputs" />
       <excludeFolder url="file://C:/tmp/Flags_Quiz_AS/flagsQuiz/tmp" />
     </content>

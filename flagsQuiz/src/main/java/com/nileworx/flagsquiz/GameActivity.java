@@ -775,7 +775,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 				// Vibrate for 500 milliseconds
 				v.vibrate(500);
 
-				LinearLayout flagLayout = (LinearLayout) findViewById(R.id.flagLayout);
+				RelativeLayout flagLayout = (RelativeLayout) findViewById(R.id.flagLayout);
 
 				animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
 				flagLayout.startAnimation(animShake);
