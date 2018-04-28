@@ -22,6 +22,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -511,55 +513,53 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 			Configuration config = getResources().getConfiguration();
 
-			int width = 0;
-			int height = 0;
-			int textSize = 0;
+
+
+
+			Display display = getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			int width = size.x / 14;
+			int height = width;
+			int textSize = 18;
+
 
 			if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL) {
-				width = 30;
-				height = 30;
-				textSize = 24;
-			} else if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
-				width = 60;
-				height = 60;
+
 				textSize = 20;
+			} else if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+
+				textSize = 17;
 //				Log.e("inches", "hh");
 //				Log.e("sWidth", String.valueOf(sWidth));
 				if (sWidth <= 320) {
-					width = 30;
-					height = 30;
-					textSize = 20;
+
+					textSize = 17;
 				}
 				if (sWidth > 480 && screenInches >= 4 && screenInches <= 5) {
 					if (sWidth >= 1080) {
-						width = 120;
-						height = 120;
-						textSize = 22;
+
+						textSize = 18;
 					} else {
-						width = 80;
-						height = 80;
-						textSize = 22;
+
+						textSize = 18;
 					}
 //					Log.e("inches", "tt");
 				}
 			} else if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
-				width = 50;
-				height = 50;
-				textSize = 28;
+
+				textSize = 23;
 //				Log.e("inches", "aqq");
 				if (screenInches > 6.5 && screenInches < 9) {
-					width = 70;
-					height = 70;
-					textSize = 36;
+
+					textSize = 30;
 				}
 			} else if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
-				width = 100;
-				height = 96;
-				textSize = 56;
+
+				textSize = 45;
 			} else {
-				width = 60;
-				height = 60;
-				textSize = 40;
+
+				textSize = 35;
 			}
 
 			// http://www.designbyexperience.com/px-to-dp-converter/
