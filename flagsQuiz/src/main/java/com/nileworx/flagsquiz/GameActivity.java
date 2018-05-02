@@ -135,7 +135,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	ImageButton hide, letter, solution, videoAd;
 
-	private RewardedVideoAd mRewardedVideoAd;
+	public static RewardedVideoAd mRewardedVideoAd;
 	boolean videoAdHelper;
 	ImageView flImage;
 
@@ -400,9 +400,19 @@ public class GameActivity extends Activity implements OnTouchListener {
 					@Override
 					public void onClick(View view) {
 						Log.i("###", " vdieoAD clicked");
-						if (mRewardedVideoAd.isLoaded()) {
-							mRewardedVideoAd.show();
+
+						if(cd.isConnectingToInternet()){
+							mRewardedVideoAd.loadAd(getText(R.string.videoAdID).toString(),
+									new AdRequest.Builder().build());
+							String msg = getResources().getString(R.string.videoAdDlg);
+							dialog.showDialog(R.layout.blue_dialog, "videoAdDlg", msg, marketLink);
+						}else{
+							Toast.makeText(getApplicationContext(), "Please check your internet connection to see a video ad." , Toast.LENGTH_SHORT).show();
 						}
+
+
+
+
 					}
 				});
 
@@ -427,7 +437,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 					@Override
 					public void onRewardedVideoAdClosed() {
 						if(videoAdHelper){
-							db.addTotalCoins(10);
+							db.addTotalCoins(20);
 							coinsValue.setText(String.valueOf(getCoinsNumber()));
 							sm.playSound(R.raw.rewardsound, getApplicationContext());
 						}
@@ -764,6 +774,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 	// ==============================================================================
 
 	private void isRight(int result) {
+		Log.e("###",flagId + "");
 		e.putInt("playingNum", mSharedPreferences.getInt("playingNum", 0) + 1);
 		e.commit();
 
@@ -1284,23 +1295,23 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	public void countUsingNumForRating() {
 
-		e.putInt("usingNum", mSharedPreferences.getInt("usingNum", 0) + 1);
-		e.commit();
-
-		if (mSharedPreferences.getInt("usingNum", 0) >= 8) {
-
-			new Handler().postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					cd = new ConnectionDetector(GameActivity.this);
-					if (cd.isConnectingToInternet()) {
-						String msg = getResources().getString(R.string.rateDlg);
-						dialog.showDialog(R.layout.blue_dialog, "rateDlg", msg, marketLink);
-					}
-				}
-			}, 3000);
-
-		}
+//		e.putInt("usingNum", mSharedPreferences.getInt("usingNum", 0) + 1);
+//		e.commit();
+//
+//		if (mSharedPreferences.getInt("usingNum", 0) >= 8) {
+//
+//			new Handler().postDelayed(new Runnable() {
+//				@Override
+//				public void run() {
+//					cd = new ConnectionDetector(GameActivity.this);
+//					if (cd.isConnectingToInternet()) {
+//						String msg = getResources().getString(R.string.rateDlg);
+//						dialog.showDialog(R.layout.blue_dialog, "rateDlg", msg, marketLink);
+//					}
+//				}
+//			}, 3000);
+//
+//		}
 
 	}
 
@@ -1330,4 +1341,10 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	}
 
+//	public void videoNotLoaded(){
+//		Toast.makeText(this, "Video is loading..." , Toast.LENGTH_SHORT).show();
+//	}
+
 }
+
+

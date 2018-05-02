@@ -15,6 +15,7 @@ import android.database.Cursor;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.support.customtabs.CustomTabsService;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -75,6 +76,9 @@ public class CustomDialog {
 		if (dialogName.equals("exitDlg")) {
 			confirmDlg.setVisibility(View.VISIBLE);
 			exitDlg(dialog);
+		}else if (dialogName.equals("videoAdDlg")){
+			confirmDlg.setVisibility(View.VISIBLE);
+			videoAdDlg(dialog);
 		} else if (dialogName.equals("updatesActivityDlg")) {
 			confirmDlg.setVisibility(View.VISIBLE);
 			updatesActivityDlg(dialog, data);
@@ -146,6 +150,39 @@ public class CustomDialog {
 				sou.playSound(R.raw.buttons);
 				((Activity) context).finish();
 				System.exit(0);
+			}
+		});
+	}
+
+	// ==============================================================================
+
+	private void videoAdDlg(final Dialog dialog) {
+
+		Button noBtn = (Button) dialog.findViewById(R.id.noBtn);
+		// if button is clicked, close the custom dialog
+		noBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				sou.playSound(R.raw.buttons);
+				dialog.dismiss();
+			}
+		});
+
+		Button yesBtn = (Button) dialog.findViewById(R.id.yesBtn);
+		// if button is clicked, close the custom dialog
+		yesBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				sou.playSound(R.raw.buttons);
+
+				if (GameActivity.mRewardedVideoAd.isLoaded()) {
+					GameActivity.mRewardedVideoAd.show();
+					dialog.dismiss();
+				}else{
+//					GameActivity ga = new GameActivity();
+//					ga.videoNotLoaded();
+
+			}
 			}
 		});
 	}

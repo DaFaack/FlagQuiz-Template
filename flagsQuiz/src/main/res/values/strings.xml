@@ -48,6 +48,7 @@
     <string name="correctDlg">Congratulations!</string>
     <string name="wrongDlg">Wrong!</string>
     <string name="rateDlg">Please rate our app on google play!</string>
+    <string name="videoAdDlg">You want to see a video ad to get 20 free coins?</string>
     <string name="resetDlg">After reset you will lose your score, coins and answers. Continue?</string>
     <string name="exitDlg">Are you sure you want to exit?</string>
     <string name="finishDlg">Great Job!\nYou have finished the game :)</string>
