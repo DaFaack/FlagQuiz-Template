@@ -40,15 +40,15 @@
 
         <Button
             android:id="@+id/noBtn"
-            android:layout_width="60dp"
-            android:layout_height="62dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/button_dlg_no" />
 
         <Button
             android:id="@+id/yesBtn"
-            android:layout_width="60dp"
-            android:layout_height="62dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/button_dlg_yes" />
     </LinearLayout>
 

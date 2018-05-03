@@ -29,7 +29,7 @@
     <string name="app_name">Flags Quiz</string>
     <string name="score">Score</string>
     <string name="noGooglePlayMessage">Could not open Android market, please install the market app.</string>
-    <string name="stopLetterHelp">Can\'t add a letter, stop letter help first!</string>
+    <string name="stopLetterHelp">Click a question mark to reveal the letter behind it</string>
     <string name="twitterHelpMessage">Who knows this flag?</string>
     <string name="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <!--     <string name="alphabet">أبتثجحخدذرزسشصضطظعغفقكلمنهويئءؤىةاآ</string> -->

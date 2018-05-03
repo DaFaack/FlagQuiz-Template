@@ -156,35 +156,6 @@ public class SettingsActivity extends Activity {
 			}
 		});
 
-		final RelativeLayout rate = (RelativeLayout) findViewById(R.id.rate);
-		final TextView rateText = (TextView) findViewById(R.id.rateText);
-		rateText.setText(getResources().getString(R.string.rateBtn));
-		
-		rate.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-					return;
-				}
-				mLastClickTime = SystemClock.elapsedRealtime();
-				sou.playSound(R.raw.buttons);
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-
-				intent.setData(Uri.parse("market://details?id=" + getPackageName()));
-
-				if (!MyStartActivity(intent)) {
-					// Market (Google play) app seems not installed, let's try
-					// to open a webbrowser
-					intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName()));
-					if (!MyStartActivity(intent)) {
-						// Well if this also fails, we have run out of options,
-						// inform the user.
-						Toast.makeText(SettingsActivity.this, getResources().getString(R.string.noGooglePlayMessage), Toast.LENGTH_SHORT).show();
-					}
-				}
-
-			}
-		});
 
 		final RelativeLayout share = (RelativeLayout) findViewById(R.id.share);
 		final TextView shareText = (TextView) findViewById(R.id.shareText);
