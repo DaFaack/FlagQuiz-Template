@@ -5,7 +5,6 @@
     android:versionCode="7"
     android:versionName="1.0">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -23,17 +22,18 @@
         tools:replace="android:label">
         <meta-data
             android:name="com.google.android.gms.version"
-            tools:replace="android:value"
-            android:value="@integer/google_play_services_version" />
+            android:value="@integer/google_play_services_version"
+            tools:replace="android:value" />
         <meta-data
             android:name="com.google.android.gms.games.APP_ID"
-            tools:replace="android:value"
-            android:value="@string/app_id" />
+            android:value="@string/app_id"
+            tools:replace="android:value" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreen"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,25 +41,26 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".GameActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ShopActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"></activity>
-
-
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
-        <service android:name=".GetUpdatesService"></service>
-
+        <service android:name=".GetUpdatesService" />
 
     </application>
 
