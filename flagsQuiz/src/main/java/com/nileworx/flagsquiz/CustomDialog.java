@@ -342,13 +342,13 @@ public class CustomDialog {
 				String coins = "0";
 				switch (act.globalViewId) {
 				case R.id.hide:
-					coins = "5";
+					coins = context.getResources().getString(R.string.coin_costs_explosion);
 					break;
 				case R.id.letter:
-					coins = "5";
+					coins = context.getResources().getString(R.string.coin_costs_showletter);
 					break;
 				case R.id.solution:
-					coins = "10";
+					coins = context.getResources().getString(R.string.coin_costs_solution);
 					break;
 				}
 

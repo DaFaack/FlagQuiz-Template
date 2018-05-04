@@ -15,11 +15,21 @@
     <!--new stuff e.g. links, preise, variable werte-->
     <string name="link_to_app">https://play.google.com/store/apps/details?id=com.pentasounds.fortniteguessthewordquiz</string>
 
-    <!--coins-->
+
+
+    <!-- =========================== COINS =========================== -->
+    <!--coins settings-->
     <string name="coins_for_videeoad">10</string>
     <string name="coins_for_rating">10</string>
     <string name="coins_for_insta">10</string>
     <string name="coins_for_share">10</string>
+
+    <!--coins gameactivtiy/hints-->
+    <string name="coins_for_right_answer">11</string>
+    <!--nimmt wert für video von coins settings-->
+    <string name="coin_costs_explosion">11</string>
+    <string name="coin_costs_showletter">22</string>
+    <string name="coin_costs_solution">33</string>
 
     <!-- =========================== Language =========================== -->
 
@@ -41,9 +51,9 @@
     <string name="noUpdatesDlg">There are not any updates!</string>
     <string name="facebookHelpDlg">Ask your friends on facebook!\nCost : 5 coins</string>
     <string name="twitterHelpDlg">Ask your friends on twitter!\nCost : 5 coins</string>
-    <string name="hideHelpDlg">Remove the wrong letters!\nCost : 5 coin</string>
-    <string name="letterHelpDlg">Show one letter!\nCost : 5 coin</string>
-    <string name="solutionHelpDlg">Show the solution!\nCost : 10 coins</string>
+    <string name="hideHelpDlg">Remove the wrong letters!\nCost : </string>
+    <string name="letterHelpDlg">Show one letter!\nCost : </string>
+    <string name="solutionHelpDlg">Show the solution!\nCost : </string>
     <string name="noCoinsDlg">You don\'t have enough coins!</string>
     <string name="correctDlg">Congratulations!</string>
     <string name="wrongDlg">Wrong!</string>

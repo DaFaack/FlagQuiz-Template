@@ -764,14 +764,14 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	private void addCoins() {
 		coins = 0;
-		if (flPoints == 100) {
-			coins = 2;
-
-		} else if (flPoints > 0 && flPoints < 100) {
-			coins = 1;
-
-		}
-		db.addTotalCoins(coins);
+//		if (flPoints == 100) {
+//			coins = 2;
+//
+//		} else if (flPoints > 0 && flPoints < 100) {
+//			coins = 1;
+//
+//		}
+		db.addTotalCoins(Integer.parseInt(getResources().getString(R.string.coins_for_right_answer)) );
 
 		coinsValue.setText(String.valueOf(getCoinsNumber()));
 
@@ -780,7 +780,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 	// ==============================================================================
 
 	private void isRight(int result) {
-		Log.e("###",flagId + "");
 		e.putInt("playingNum", mSharedPreferences.getInt("playingNum", 0) + 1);
 		e.commit();
 
@@ -925,13 +924,13 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 				switch (viewId) {
 				case R.id.hide:
-					msg = getResources().getString(R.string.hideHelpDlg);
+					msg = getResources().getString(R.string.hideHelpDlg) + " "  + getResources().getString(R.string.coin_costs_explosion) + " coins";
 					break;
 				case R.id.letter:
-					msg = getResources().getString(R.string.letterHelpDlg);
+					msg = getResources().getString(R.string.letterHelpDlg) + " "  + getResources().getString(R.string.coin_costs_showletter) + " coins";
 					break;
 				case R.id.solution:
-					msg = getResources().getString(R.string.solutionHelpDlg);
+					msg = getResources().getString(R.string.solutionHelpDlg) + " " + getResources().getString(R.string.coin_costs_solution) + " coins";
 					break;
 				}
 
