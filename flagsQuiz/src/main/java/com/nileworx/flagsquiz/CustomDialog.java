@@ -71,7 +71,6 @@ public class CustomDialog {
 		LinearLayout confirmDlg = (LinearLayout) dialog.findViewById(R.id.confirmDlg);
 		LinearLayout wrongDlg = (LinearLayout) dialog.findViewById(R.id.wrongDlg);
 		LinearLayout alertDlg = (LinearLayout) dialog.findViewById(R.id.alertDlg);
-		LinearLayout askRateDlg = (LinearLayout) dialog.findViewById(R.id.askRateDlg);
 
 		if (dialogName.equals("exitDlg")) {
 			confirmDlg.setVisibility(View.VISIBLE);
@@ -97,9 +96,6 @@ public class CustomDialog {
 		} else if (dialogName.equals("helpDlg")) {
 			confirmDlg.setVisibility(View.VISIBLE);
 			helpDlg(dialog);
-		} else if (dialogName.equals("rateDlg")) {
-			askRateDlg.setVisibility(View.VISIBLE);
-			rateDlg(dialog, data);
 		} else if (dialogName.equals("solutionDlg")) {
 			alertDlg.setVisibility(View.VISIBLE);
 			solutionDlg(dialog);
@@ -304,41 +300,7 @@ public class CustomDialog {
 		});
 	}
 
-	// ==============================================================================
 
-	private void rateDlg(final Dialog dialog, final String marketLink) {
-
-		Button rateBtn = (Button) dialog.findViewById(R.id.rateBtn);
-		// if button is clicked, close the custom dialog
-		rateBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				sou.playSound(R.raw.buttons);
-				dialog.dismiss();
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-
-				intent.setData(Uri.parse("market://details?id=" + context.getPackageName()));
-
-					intent.setData(Uri.parse(marketLink));
-
-						editor.putInt("usingNum", 100);
-						editor.commit();
-					}
-
-		});
-
-		Button laterBtn = (Button) dialog.findViewById(R.id.laterBtn);
-		// if button is clicked, close the custom dialog
-		laterBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				sou.playSound(R.raw.buttons);
-				editor.putInt("usingNum", 0);
-				editor.commit();
-				dialog.dismiss();
-			}
-		});
-	}
 
 	// ==============================================================================
 

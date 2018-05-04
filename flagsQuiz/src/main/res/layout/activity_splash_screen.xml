@@ -20,15 +20,12 @@
         android:id="@+id/splash_title"
         android:layout_width="300dp"
         android:layout_height="118dp"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:translationY="100dp"
         android:layout_centerHorizontal="true"
-        android:translationY="500px"
         android:scaleType="fitXY"
         android:scaleX="1.2"
         android:scaleY="1.2"
         android:src="@drawable/main_title" />
-
-
-
 
 </RelativeLayout>

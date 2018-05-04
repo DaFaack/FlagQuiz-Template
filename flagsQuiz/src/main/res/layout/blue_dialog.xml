@@ -52,43 +52,7 @@
             android:background="@drawable/button_dlg_yes" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/alertDlg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/blueDlg"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:visibility="gone" >
 
-        <Button
-            android:id="@+id/dismissBtn"
-            android:layout_width="90dp"
-            android:layout_height="43dp"
-            android:background="@drawable/button_blue_dlg_dismiss" />
-    </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/askRateDlg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/blueDlg"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:visibility="gone" >
 
-        <Button
-            android:id="@+id/rateBtn"
-            android:layout_width="90dp"
-            android:layout_height="43dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/button_dlg_rate" />
-
-        <Button
-            android:id="@+id/laterBtn"
-            android:layout_width="90dp"
-            android:layout_height="43dp"
-            android:background="@drawable/button_dlg_later" />
-    </LinearLayout>
 
 </RelativeLayout>
