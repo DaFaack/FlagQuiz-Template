@@ -25,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-                splash_title.animate().translationY(300f).setDuration(500);
+                splash_title.animate().translationY(20f).setDuration(500);
                 splash_title.animate().scaleX(1f).setDuration(500);
                 splash_title.animate().scaleY(1f).setDuration(500);
                 splash_dark.animate().alpha(1f).setDuration(500);
