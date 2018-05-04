@@ -39,6 +39,9 @@ public class CustomDialog {
 	Cursor c;
 	SoundClass sou;
 
+
+	GameActivity ga = new GameActivity();
+
 	// ==============================================================================
 
 	public CustomDialog(Context context) {
@@ -176,7 +179,6 @@ public class CustomDialog {
 					GameActivity.mRewardedVideoAd.show();
 					dialog.dismiss();
 				}else{
-//					GameActivity ga = new GameActivity();
 //					ga.videoNotLoaded();
 
 			}
