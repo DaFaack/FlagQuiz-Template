@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nileworx.flagsquiz.R;
@@ -42,12 +44,19 @@ public class MainActivity extends Activity {
 	private ConnectionDetector cd;
 	private long mLastClickTime = 0;
 
+	//schriftarten anpassen
+	public Typeface burbank;
+
 	// ==============================================================================
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
+		//schriftarten anpassen
+		burbank = Typeface.createFromAsset(getAssets(),"fonts/burbank.otf");
+
+
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 

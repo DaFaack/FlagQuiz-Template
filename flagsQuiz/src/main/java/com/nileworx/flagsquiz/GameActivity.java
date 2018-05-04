@@ -131,7 +131,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	LinearLayout rightHelps;
 	RelativeLayout layout;
-	TextView coinsValue;
+	TextView coinsValue, leveltext;
 
 	ImageButton hide, letter, solution, videoAd;
 
@@ -158,12 +158,15 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	SimpleMethods sm = new SimpleMethods();
 
+
+
+	public Typeface tf;
+
 	// ==============================================================================
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 
 
 		DisplayMetrics displaymetrics = new DisplayMetrics();
@@ -259,7 +262,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 			}
 		}
 
-		Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/" + getResources().getString(R.string.main_font));
+		tf = Typeface.createFromAsset(getAssets(), "fonts/" + getResources().getString(R.string.main_font));
 
 
 		if (getResources().getString(R.string.langDirection).equals("rtl")) {
@@ -271,6 +274,9 @@ public class GameActivity extends Activity implements OnTouchListener {
 		coinsValue = (TextView) layout.findViewById(R.id.coinsValue);
 		coinsValue.setTypeface(tf);
 		coinsValue.setText(String.valueOf(getCoinsNumber()));
+
+		leveltext = (TextView)layout.findViewById(R.id.level);
+		leveltext.setTypeface(tf);
 
 		hide = (ImageButton) findViewById(R.id.hide);
 		letter = (ImageButton) findViewById(R.id.letter);

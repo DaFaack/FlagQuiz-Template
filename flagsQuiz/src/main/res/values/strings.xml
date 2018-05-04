@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="main_font">HOBOSTD.OTF</string>
+    <string name="main_font">burbank.otf</string>
     <string name="siteUrl">http://www.nileworx.com/android/adminpanels/flags_quiz/</string>
     <string name="app_id">124251</string>
     <string name="flags_score_leaderboard">xxxxxxx</string>

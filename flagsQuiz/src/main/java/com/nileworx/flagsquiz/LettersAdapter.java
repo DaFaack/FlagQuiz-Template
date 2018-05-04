@@ -20,7 +20,6 @@ public class LettersAdapter extends BaseAdapter {
 	protected ArrayList<HashMap<String, String>> data;
 	private static LayoutInflater inflater = null;
 	Context context;
-	Typeface tf;
 
 	public LettersAdapter(Activity a, ArrayList<HashMap<String, String>> d) {
 		activity = a;
@@ -56,15 +55,15 @@ public class LettersAdapter extends BaseAdapter {
 		View vi = convertView;
 		if (convertView == null)
 			vi = inflater.inflate(R.layout.letter_row_grid, null);
-		
+
 		TextView letterBall = (TextView) vi.findViewById(R.id.letterButton); // flag
 
 		HashMap<String, String> ballMap = new HashMap<String, String>();
 		ballMap = data.get(position);
 
 		letterBall.setText(ballMap.get(GameActivity.KEY_LETTER_GAME).toUpperCase());
-		
-		
+
+
 		// Setting all values in gridview
 		
 

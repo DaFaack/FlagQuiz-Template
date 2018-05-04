@@ -115,6 +115,7 @@ public class CustomDialog {
 				textSize = 24f;
 			}
 			message.setTextSize(textSize);
+
 			alertDlg.setVisibility(View.VISIBLE);
 			finishDlg(dialog);
 		}
