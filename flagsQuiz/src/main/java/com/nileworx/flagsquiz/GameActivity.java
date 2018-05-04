@@ -1272,6 +1272,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 		Intent intent = new Intent(GameActivity.this, MainActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		sou.playSound(R.raw.buttons);
 		finish();
 		startActivity(intent);
 	}

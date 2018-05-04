@@ -224,6 +224,7 @@ public class ShopActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                sou.playSound(R.raw.buttons);
                 finish();
 
             }
@@ -448,7 +449,16 @@ public class ShopActivity extends Activity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(ShopActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        sou.playSound(R.raw.buttons);
+        finish();
+        startActivity(intent);
+    }
 
 
 

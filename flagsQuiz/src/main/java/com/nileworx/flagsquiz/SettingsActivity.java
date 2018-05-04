@@ -203,7 +203,7 @@ public class SettingsActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+				sou.playSound(R.raw.buttons);
 				finish();
 
 			}
@@ -249,6 +249,17 @@ public class SettingsActivity extends Activity {
 		} catch (ActivityNotFoundException e) {
 			return false;
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		sou.playSound(R.raw.buttons);
+		finish();
+		startActivity(intent);
 	}
 
 	// ==============================================================================

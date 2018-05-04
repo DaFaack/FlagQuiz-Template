@@ -3,16 +3,17 @@
 
     <string name="main_font">HOBOSTD.OTF</string>
     <string name="siteUrl">http://www.nileworx.com/android/adminpanels/flags_quiz/</string>
-    <string name="adBannerUnitId">ca-app-pub-xxxxxxx/xxxxxxx</string>
-    <string name="adInterstitialUnitId">ca-app-pub-xxxxxxx/xxxxxxx</string>
     <string name="app_id">124251</string>
     <string name="flags_score_leaderboard">xxxxxxx</string>
     <string name="langDirection">ltr</string>
 
+    <!--Advertising-->
+    <string name="videoAdID">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="adBannerUnitId">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="adInterstitialUnitId">ca-app-pub-3940256099942544/1033173712</string>
 
     <!--new stuff e.g. links, preise, variable werte-->
     <string name="link_to_app">https://play.google.com/store/apps/details?id=com.pentasounds.fortniteguessthewordquiz</string>
-    <string name="videoAdID">ca-app-pub-3940256099942544/5224354917</string>
 
     <!--coins-->
     <string name="coins_for_videeoad">10</string>
@@ -25,7 +26,7 @@
 
     <!-- General -->
 
-    <string name="app_name">Flags Quiz</string>
+    <string name="app_name">Quiz for Fortnite</string>
     <string name="score">Score</string>
     <string name="noGooglePlayMessage">Could not open Android market, please install the market app.</string>
     <string name="stopLetterHelp">Click a question mark to reveal the letter behind it</string>
@@ -61,8 +62,8 @@
     <string name="internetErrorDlgMessage">Please connect to an internet connection!</string>
     <string name="internetErrorDlgOkBtn">OK</string>
     <string name="shareDlgTitle">Share via</string>
-    <string name="shareDlgSubject">Flags Quiz</string>
-    <string name="shareDlgMessage">Flags Quiz on Google Play! \n\n</string>
+    <string name="shareDlgSubject">Quiz for Fortnite</string>
+    <string name="shareDlgMessage">Quiz for Fortnite on Google Play! \n\n</string>
 
     <!-- Settings -->
 
