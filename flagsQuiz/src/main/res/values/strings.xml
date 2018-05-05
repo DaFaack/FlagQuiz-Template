@@ -47,6 +47,7 @@
     <!-- Dialogs -->
     <!-- Remember! Most buttons of dialogs are graphic buttons not texts -->
 
+    <string name="afterRatingDlg">Thanks for your rating. You got 10 coins !</string>
     <string name="updatesDlg">There are new %s flags. Download?</string>
     <string name="noUpdatesDlg">There are not any updates!</string>
     <string name="facebookHelpDlg">Ask your friends on facebook!\nCost : 5 coins</string>

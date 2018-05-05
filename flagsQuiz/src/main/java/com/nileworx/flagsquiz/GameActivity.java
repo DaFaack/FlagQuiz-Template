@@ -467,10 +467,6 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 					}
 
-					@Override
-					public void onRewardedVideoCompleted() {
-
-					}
 				});
 				mRewardedVideoAd.loadAd(getText(R.string.videoAdID).toString(),
 						new AdRequest.Builder().build());
@@ -818,16 +814,20 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	public void showInterstitialAd() {
 
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				if (interstitial.isLoaded()) {
-					interstitial.show();
-				}
+//		new Handler().postDelayed(new Runnable() {
+//			@Override
+//			public void run() {
+//				if (interstitial.isLoaded()) {
+//					interstitial.show();
+//				}
+//
+//			}
+//		}, 3000);
 
-			}
-		}, 3000);
 
+		if (interstitial.isLoaded()) {
+			interstitial.show();
+		}
 	}
 
 	// ==============================================================================

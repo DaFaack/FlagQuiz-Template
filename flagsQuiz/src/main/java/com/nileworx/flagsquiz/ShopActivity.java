@@ -30,15 +30,26 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.pollfish.interfaces.PollfishClosedListener;
+import com.pollfish.interfaces.PollfishOpenedListener;
+import com.pollfish.interfaces.PollfishSurveyCompletedListener;
+import com.pollfish.interfaces.PollfishSurveyNotAvailableListener;
+import com.pollfish.interfaces.PollfishSurveyReceivedListener;
+import com.pollfish.interfaces.PollfishUserNotEligibleListener;
+import com.pollfish.main.PollFish;
+import com.pollfish.main.PollFish.ParamsBuilder;
+import com.pollfish.constants.Position;
 
 
-public class ShopActivity extends Activity {
+public class ShopActivity
+        extends Activity{
+
     SimpleMethods sm = new SimpleMethods();
 
     //VideoAD
     Button btn_videoAd;
     private RewardedVideoAd mRewardedVideoAd;
-    boolean rewarded;
+    boolean rewarded, survey_achieved;
 
 
     //rate App
@@ -49,7 +60,7 @@ public class ShopActivity extends Activity {
     Button btn_insta, btn_share;
     TextView tv_insta, tv_share;
 
-
+    TextView coinfield;
 
 
     SharedPreferences mSharedPreferences;
@@ -80,6 +91,7 @@ public class ShopActivity extends Activity {
         btn_share = (Button)findViewById(R.id.btn_share);
         tv_insta = (TextView)findViewById(R.id.instaText);
         tv_share = (TextView)findViewById(R.id.share_text);
+        coinfield = (TextView)findViewById(R.id.coinfield);
 
 
         btn_insta.setOnClickListener(new View.OnClickListener() {
@@ -155,10 +167,6 @@ public class ShopActivity extends Activity {
 
             }
 
-            @Override
-            public void onRewardedVideoCompleted() {
-
-            }
         });
         mRewardedVideoAd.loadAd(getText(R.string.videoAdID).toString(),
                 new AdRequest.Builder().build());
@@ -169,7 +177,6 @@ public class ShopActivity extends Activity {
                 btn_rate_click();
             }
         });
-
 
 
         if(sm.getBoolean("rate_used", getApplicationContext())){
@@ -231,6 +238,10 @@ public class ShopActivity extends Activity {
         });
 
 
+
+
+
+
     }
 
     // =========================================================================================
@@ -245,6 +256,10 @@ public class ShopActivity extends Activity {
             e.putString("flagsNum", "0");
             e.commit();
         }
+
+        PollFish.initWith(this, new ParamsBuilder("60086323-aa35-44a2-9324-b6ecc9b44b90")
+                .indicatorPadding(65)
+                .build());
     }
 
     // ==============================================================================
@@ -295,6 +310,7 @@ public class ShopActivity extends Activity {
         db.addTotalCoins(Integer.parseInt(getText(R.string.coins_for_videeoad).toString() ));
         sm.playSound(R.raw.rewardsound, getApplicationContext());
         Toast.makeText(getApplicationContext(), "Congratulations, you received " + getText(R.string.coins_for_videeoad).toString() + " coins!", Toast.LENGTH_SHORT).show();
+        coinfield.setText(String.valueOf(getCoinsNumber()));
     }
 
 
@@ -318,28 +334,15 @@ public class ShopActivity extends Activity {
 
                     sm.saveBoolean("rate_used", true, getApplicationContext());
 
-                    AlertDialog.Builder a_builder;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        a_builder = new AlertDialog.Builder(ShopActivity.this, android.R.style.Theme_Material_Dialog_Alert);
-                    } else {
-                        a_builder = new AlertDialog.Builder(ShopActivity.this);
-                    }
-                    a_builder.setMessage("Thanks for your rating, you received 10 coins !")
-                            .setCancelable(true)
-                            .setPositiveButton("thanks", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.cancel();
-                                    sm.playSound(R.raw.rewardsound,getApplicationContext());
-                                }
-                            });
-                    AlertDialog alert = a_builder.create();
-                    alert.setTitle("well done");
-                    alert.show();
+
+
+                    dialog.showDialog(R.layout.blue_dialog, "afterRatingDlg", getResources().getString(R.string.afterRatingDlg), null);
+
+
 
 
                     db.addTotalCoins(Integer.parseInt(getText(R.string.coins_for_rating).toString() ));
-
+                    coinfield.setText(String.valueOf(getCoinsNumber()));
                 }
             }, 8000);
 
@@ -470,4 +473,12 @@ public class ShopActivity extends Activity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
+
+
+
+//    ------Pollfish stuff ---------------------------------------------------------------------------------
+
+
+
 }

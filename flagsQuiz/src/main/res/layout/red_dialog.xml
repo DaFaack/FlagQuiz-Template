@@ -38,6 +38,7 @@
         android:visibility="gone" >
 
         <Button
+            android:text="Get Coins"
             android:id="@+id/mainBtn"
             android:layout_width="90dp"
             android:layout_height="43dp"

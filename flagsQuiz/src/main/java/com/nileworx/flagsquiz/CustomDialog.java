@@ -15,7 +15,6 @@ import android.database.Cursor;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.customtabs.CustomTabsService;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -74,6 +73,7 @@ public class CustomDialog {
 		LinearLayout confirmDlg = (LinearLayout) dialog.findViewById(R.id.confirmDlg);
 		LinearLayout wrongDlg = (LinearLayout) dialog.findViewById(R.id.wrongDlg);
 		LinearLayout alertDlg = (LinearLayout) dialog.findViewById(R.id.alertDlg);
+		LinearLayout afterRatingDlg = (LinearLayout) dialog.findViewById(R.id.afterRatingDlg);
 
 		if (dialogName.equals("exitDlg")) {
 			confirmDlg.setVisibility(View.VISIBLE);
@@ -81,6 +81,9 @@ public class CustomDialog {
 		}else if (dialogName.equals("videoAdDlg")){
 			confirmDlg.setVisibility(View.VISIBLE);
 			videoAdDlg(dialog);
+		} else if (dialogName.equals("afterRatingDlg")) {
+			afterRatingDlg.setVisibility(View.VISIBLE);
+			afterRatingDlg(dialog);
 		} else if (dialogName.equals("updatesActivityDlg")) {
 			confirmDlg.setVisibility(View.VISIBLE);
 			updatesActivityDlg(dialog, data);
@@ -187,6 +190,27 @@ public class CustomDialog {
 	}
 
 	// ==============================================================================
+
+	private void afterRatingDlg(final Dialog dialog) {
+
+
+		Button okBtn = (Button) dialog.findViewById(R.id.okBtn);
+		// if button is clicked, close the custom dialog
+		okBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.cancel();
+				SimpleMethods sm = new SimpleMethods();
+				sm.playSound(R.raw.rewardsound,context);
+				dialog.dismiss();
+			}
+		});
+	}
+
+	// ==============================================================================
+
+
+
 
 	private void updatesActivityDlg(final Dialog dialog, final String json) {
 
@@ -487,11 +511,14 @@ public class CustomDialog {
 			@Override
 			public void onClick(View v) {
 				sou.playSound(R.raw.buttons);
-				Intent intent = new Intent(context, MainActivity.class);
+//				Intent intent = new Intent(context, MainActivity.class);
+////
+////				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+////				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+////				((Activity) context).finish();
+////				context.startActivity(intent);
 
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				((Activity) context).finish();
+				Intent intent = new Intent(context, ShopActivity.class);
 				context.startActivity(intent);
 			}
 		});
@@ -503,11 +530,13 @@ public class CustomDialog {
 			public void onClick(View v) {
 				sou.playSound(R.raw.buttons);
 
-				Intent intent = ((Activity) context).getIntent();
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				((Activity) context).finish();
-				context.startActivity(intent);
+				dialog.dismiss();
+
+//				Intent intent = ((Activity) context).getIntent();
+//				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//				((Activity) context).finish();
+//				context.startActivity(intent);
 			}
 		});
 
