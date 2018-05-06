@@ -910,13 +910,14 @@ public class GameActivity extends Activity implements OnTouchListener {
 	public void getHelp(final int viewId) {
 		int remainCoins = Integer.parseInt(coinsValue.getText().toString());
 		if (isHelpUsed(viewId) != 1) {
-			boolean noHideCoins = (viewId == R.id.hide && remainCoins < 5);
-			boolean noLetterCoins = (viewId == R.id.letter && remainCoins < 5);
-			boolean noSolutionCoins = (viewId == R.id.solution && remainCoins < 10);
+			boolean noHideCoins = (viewId == R.id.hide && remainCoins < 11);
+			boolean noLetterCoins = (viewId == R.id.letter && remainCoins < 22);
+			boolean noSolutionCoins = (viewId == R.id.solution && remainCoins < 33);
 
 			if (noHideCoins || noLetterCoins || noSolutionCoins) {
 
-				dialog.showDialog(R.layout.blue_dialog, "noCoinsDlg", getResources().getString(R.string.noCoinsDlg), null);
+				dialog.showDialog(R.layout.red_dialog, "noCoinsDlg", getResources().getString(R.string.noCoinsDlg), null);
+
 
 			} else {
 
