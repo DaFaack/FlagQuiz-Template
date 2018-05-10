@@ -109,6 +109,7 @@
             android:id="@+id/reset"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/button_setting_settings_sml" >
 
             <ImageView
@@ -130,6 +131,36 @@
                 android:textStyle="bold" >
             </TextView>
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/impressum"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_setting_settings_sml" >
+
+            <ImageView
+                android:id="@+id/impressum_bild"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/gesetzt_klein" />
+
+            <TextView
+                android:id="@+id/impressum_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Reset Game"
+                android:textColor="#FFF"
+                android:textSize="18sp"
+                android:textStyle="bold" >
+            </TextView>
+        </RelativeLayout>
+
+
+
     </LinearLayout>
 
     <com.google.android.gms.ads.AdView

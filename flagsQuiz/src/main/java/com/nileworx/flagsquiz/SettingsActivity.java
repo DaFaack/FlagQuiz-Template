@@ -199,6 +199,27 @@ public class SettingsActivity extends Activity {
 			}
 		});
 
+
+		final RelativeLayout impressum = (RelativeLayout) findViewById(R.id.impressum);
+		final TextView impressum_text = (TextView) findViewById(R.id.impressum_text);
+		impressum_text.setText(getResources().getString(R.string.impressumBtn));
+
+		impressum.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+					return;
+				}
+				mLastClickTime = SystemClock.elapsedRealtime();
+				sou.playSound(R.raw.buttons);
+				Intent intent = new Intent(SettingsActivity.this, ImpressumActivity.class);
+				startActivity(intent);
+
+
+
+			}
+		});
+
 		ImageButton back = (ImageButton) layout.findViewById(R.id.back);
 		back.setOnClickListener(new OnClickListener() {
 			@Override

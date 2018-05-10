@@ -131,7 +131,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	LinearLayout rightHelps;
 	RelativeLayout layout;
-	TextView coinsValue, leveltext;
+	TextView coinsValue, leveltext, level;
 
 	ImageButton hide, letter, solution, videoAd;
 
@@ -277,6 +277,9 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 		leveltext = (TextView)layout.findViewById(R.id.level);
 		leveltext.setTypeface(tf);
+
+		level = layout.findViewById(R.id.title);
+		level.setTypeface(tf);
 
 		hide = (ImageButton) findViewById(R.id.hide);
 		letter = (ImageButton) findViewById(R.id.letter);
