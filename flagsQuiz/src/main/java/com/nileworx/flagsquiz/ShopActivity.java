@@ -231,6 +231,7 @@ public class ShopActivity
 
         TextView title = (TextView) layout.findViewById(R.id.title);
         title.setText(getResources().getString(R.string.shopTitle).toUpperCase());
+        title.setTypeface(tf);
 
         RelativeLayout scoreAndCoins = (RelativeLayout) layout.findViewById(R.id.scoreAndCoins);
         scoreAndCoins.setVisibility(View.GONE);

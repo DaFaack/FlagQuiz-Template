@@ -1,6 +1,7 @@
 package com.nileworx.flagsquiz;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 
 public class ImpressumActivity extends AppCompatActivity {
 SoundClass sou;
-
+    Typeface tf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,12 @@ SoundClass sou;
 
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.titleBar);
 
+
+        tf = Typeface.createFromAsset(getAssets(), "fonts/" + getResources().getString(R.string.main_font));
+
         TextView title = (TextView) layout.findViewById(R.id.title);
         title.setText(getResources().getString(R.string.impressumTitle).toUpperCase());
+        title.setTypeface(tf);
 
         RelativeLayout scoreAndCoins = (RelativeLayout) layout.findViewById(R.id.scoreAndCoins);
         scoreAndCoins.setVisibility(View.GONE);
@@ -40,6 +45,7 @@ SoundClass sou;
 
             }
         });
+
     }
 
 

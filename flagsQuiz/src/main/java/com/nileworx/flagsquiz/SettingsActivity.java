@@ -55,7 +55,7 @@ public class SettingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 
-		tf = Typeface.createFromAsset(getAssets(), "fonts/HOBOSTD.OTF");
+		tf = Typeface.createFromAsset(getAssets(), "fonts/burbank.otf");
 
 		soundText = (TextView)findViewById(R.id.soundText);
 		vibrateText = (TextView)findViewById(R.id.vibrateText);
@@ -88,6 +88,7 @@ public class SettingsActivity extends Activity {
 
 		TextView title = (TextView) layout.findViewById(R.id.title);
 		title.setText(getResources().getString(R.string.settingsTitle).toUpperCase());
+		title.setTypeface(tf);
 
 		RelativeLayout scoreAndCoins = (RelativeLayout) layout.findViewById(R.id.scoreAndCoins);
 		scoreAndCoins.setVisibility(View.GONE);
