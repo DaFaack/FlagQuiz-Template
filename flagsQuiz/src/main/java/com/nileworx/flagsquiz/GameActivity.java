@@ -470,6 +470,11 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 					}
 
+					@Override
+					public void onRewardedVideoCompleted() {
+
+					}
+
 				});
 				mRewardedVideoAd.loadAd(getText(R.string.videoAdID).toString(),
 						new AdRequest.Builder().build());
@@ -726,25 +731,25 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 						flPoints = 0;
 						switch (flTries) {
-						case 0:
-							flPoints = 100;
-							break;
+							case 0:
+								flPoints = 100;
+								break;
 
-						case 1:
-							flPoints = 80;
-							break;
+							case 1:
+								flPoints = 80;
+								break;
 
-						case 2:
-							flPoints = 60;
-							break;
+							case 2:
+								flPoints = 60;
+								break;
 
-						case 3:
-							flPoints = 40;
-							break;
+							case 3:
+								flPoints = 40;
+								break;
 
-						case 4:
-							flPoints = 20;
-							break;
+							case 4:
+								flPoints = 20;
+								break;
 						}
 						result = 1;
 					}
@@ -852,7 +857,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 //			} else {
 //				this.position = position;
 //			}
-			
+
 			this.position = position;
 		}
 
@@ -927,15 +932,15 @@ public class GameActivity extends Activity implements OnTouchListener {
 				String msg = "";
 
 				switch (viewId) {
-				case R.id.hide:
-					msg = getResources().getString(R.string.hideHelpDlg) + " "  + getResources().getString(R.string.coin_costs_explosion) + " coins";
-					break;
-				case R.id.letter:
-					msg = getResources().getString(R.string.letterHelpDlg) + " "  + getResources().getString(R.string.coin_costs_showletter) + " coins";
-					break;
-				case R.id.solution:
-					msg = getResources().getString(R.string.solutionHelpDlg) + " " + getResources().getString(R.string.coin_costs_solution) + " coins";
-					break;
+					case R.id.hide:
+						msg = getResources().getString(R.string.hideHelpDlg) + " "  + getResources().getString(R.string.coin_costs_explosion) + " coins";
+						break;
+					case R.id.letter:
+						msg = getResources().getString(R.string.letterHelpDlg) + " "  + getResources().getString(R.string.coin_costs_showletter) + " coins";
+						break;
+					case R.id.solution:
+						msg = getResources().getString(R.string.solutionHelpDlg) + " " + getResources().getString(R.string.coin_costs_solution) + " coins";
+						break;
 				}
 
 				globalViewId = viewId;
@@ -956,15 +961,15 @@ public class GameActivity extends Activity implements OnTouchListener {
 		c = db.getHelpState(flagId);
 		if (c.getCount() != 0) {
 			switch (viewId) {
-			case R.id.hide:
-				state = c.getInt(c.getColumnIndex("he_hide"));
-				break;
-			case R.id.letter:
-				state = c.getInt(c.getColumnIndex("he_letter"));
-				break;
-			case R.id.solution:
-				state = c.getInt(c.getColumnIndex("he_solution"));
-				break;
+				case R.id.hide:
+					state = c.getInt(c.getColumnIndex("he_hide"));
+					break;
+				case R.id.letter:
+					state = c.getInt(c.getColumnIndex("he_letter"));
+					break;
+				case R.id.solution:
+					state = c.getInt(c.getColumnIndex("he_solution"));
+					break;
 			}
 		}
 
@@ -997,127 +1002,127 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 		switch (viewId) {
 
-		case R.id.hide:
+			case R.id.hide:
 
-			db.updateHelpState(flagId, "he_hide");
-			sou.playSound(R.raw.explosion);
+				db.updateHelpState(flagId, "he_hide");
+				sou.playSound(R.raw.explosion);
 
-			animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
-			hide.setSelected(true);
-			hide.setEnabled(false);
+				animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
+				hide.setSelected(true);
+				hide.setEnabled(false);
 
-			for (int i = 0; i < lettersArray.size(); i++) {
-				if (lettersArray.get(i).get("is_real").equals("0")) {
+				for (int i = 0; i < lettersArray.size(); i++) {
+					if (lettersArray.get(i).get("is_real").equals("0")) {
 
-					for (int x = 0; x < positionsArray.size(); x++) {
-						if (positionsArray.get(x).get(KEY_LETTER_POSITION).equals(String.valueOf(i))) {
-							String spacePos = positionsArray.get(x).get(KEY_SPACE_POSITION);
+						for (int x = 0; x < positionsArray.size(); x++) {
+							if (positionsArray.get(x).get(KEY_LETTER_POSITION).equals(String.valueOf(i))) {
+								String spacePos = positionsArray.get(x).get(KEY_SPACE_POSITION);
 
-							TextView leSpaceHide = (TextView) spaceViews[Integer.parseInt(spacePos)];
-							// leSpaceHide.setAnimation(animBlink);
-							leSpaceHide.setText("");
-							positionsArray.remove(x);
+								TextView leSpaceHide = (TextView) spaceViews[Integer.parseInt(spacePos)];
+								// leSpaceHide.setAnimation(animBlink);
+								leSpaceHide.setText("");
+								positionsArray.remove(x);
+							}
 						}
+						lettersGrid.getChildAt(i).setAnimation(animBlink);
+						lettersGrid.getChildAt(i).setVisibility(View.INVISIBLE);
 					}
-					lettersGrid.getChildAt(i).setAnimation(animBlink);
-					lettersGrid.getChildAt(i).setVisibility(View.INVISIBLE);
 				}
-			}
 
-			break;
-		case R.id.letter:
+				break;
+			case R.id.letter:
 
-			db.updateHelpState(flagId, "he_letter");
-			animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
+				db.updateHelpState(flagId, "he_letter");
+				animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
 
-			// if (isHelpUsed(R.id.letter) == 0 && flLetter.equals("1000")) {
-			isLetterHelpOn = 1;
-			for (int i = 0; i < spaceViews.length; i++) {
-				final int position;
-				// if
-				// (getResources().getString(R.string.langDirection).equals("rtl"))
-				// {
-				// position = Math.abs(i - (spaceViews.length - 1));
-				// } else {
-				// position = i;
-				// }
+				// if (isHelpUsed(R.id.letter) == 0 && flLetter.equals("1000")) {
+				isLetterHelpOn = 1;
+				for (int i = 0; i < spaceViews.length; i++) {
+					final int position;
+					// if
+					// (getResources().getString(R.string.langDirection).equals("rtl"))
+					// {
+					// position = Math.abs(i - (spaceViews.length - 1));
+					// } else {
+					// position = i;
+					// }
 
-				position = i;
+					position = i;
 
-				final TextView leSpaceLetter = (TextView) spaceViews[position];
-				if (leSpaceLetter.getVisibility() == View.INVISIBLE) {
-					continue;
-				}
-				if (leSpaceLetter.getText().equals("")) {
-					leSpaceLetter.setText("?");
+					final TextView leSpaceLetter = (TextView) spaceViews[position];
+					if (leSpaceLetter.getVisibility() == View.INVISIBLE) {
+						continue;
+					}
+					if (leSpaceLetter.getText().equals("")) {
+						leSpaceLetter.setText("?");
 
-					leSpaceLetter.setOnClickListener(new OnClickListener() {
+						leSpaceLetter.setOnClickListener(new OnClickListener() {
 
-						@Override
-						public void onClick(View v) {
-							// TODO Auto-generated method stub
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
 
-							int newPos;
-							// if
-							// (getResources().getString(R.string.langDirection).equals("rtl"))
-							// {
-							// newPos = Math.abs(position - (spaceViews.length -
-							// 1));
-							// } else {
-							// newPos = position;
-							// }
+								int newPos;
+								// if
+								// (getResources().getString(R.string.langDirection).equals("rtl"))
+								// {
+								// newPos = Math.abs(position - (spaceViews.length -
+								// 1));
+								// } else {
+								// newPos = position;
+								// }
 
-							newPos = position;
-							if (spaceViews[newPos].getText().equals("?")) {
-								letter.setSelected(true);
-								letter.setEnabled(false);
+								newPos = position;
+								if (spaceViews[newPos].getText().equals("?")) {
+									letter.setSelected(true);
+									letter.setEnabled(false);
 
-								hideLetter(newPos);
+									hideLetter(newPos);
 
-								spaceViews[newPos].setText(String.valueOf(alphabetSpacesArray[newPos]).toUpperCase());
-								spaceViews[newPos].setTextColor(Color.YELLOW);
+									spaceViews[newPos].setText(String.valueOf(alphabetSpacesArray[newPos]).toUpperCase());
+									spaceViews[newPos].setTextColor(Color.YELLOW);
 
-								coinsValue.setText(String.valueOf(getCoinsNumber()));
+									coinsValue.setText(String.valueOf(getCoinsNumber()));
 
-								db.addLetterHelpPos(flagId, String.valueOf(newPos));
-								flLetter = String.valueOf(newPos);
-								stopLetterHelp();
-								checkIfFinal();
+									db.addLetterHelpPos(flagId, String.valueOf(newPos));
+									flLetter = String.valueOf(newPos);
+									stopLetterHelp();
+									checkIfFinal();
+
+								}
+							}
+						});
+						animShakeLetter = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake_letter);
+						lettersGrid.setOnItemClickListener(new OnItemClickListener() {
+
+							@Override
+							public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+								Toast.makeText(GameActivity.this, getResources().getString(R.string.stopLetterHelp), Toast.LENGTH_LONG).show();
+
+								if (mSharedPreferences.getInt("vibrate", 1) == 1) {
+
+									Vibrator v = (Vibrator) GameActivity.this.getSystemService(Context.VIBRATOR_SERVICE);
+									// Vibrate for 500 milliseconds
+									v.vibrate(500);
+
+									animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+									lettersGrid.startAnimation(animShake);
+								}
 
 							}
-						}
-					});
-					animShakeLetter = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake_letter);
-					lettersGrid.setOnItemClickListener(new OnItemClickListener() {
 
-						@Override
-						public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-							Toast.makeText(GameActivity.this, getResources().getString(R.string.stopLetterHelp), Toast.LENGTH_LONG).show();
-
-							if (mSharedPreferences.getInt("vibrate", 1) == 1) {
-
-								Vibrator v = (Vibrator) GameActivity.this.getSystemService(Context.VIBRATOR_SERVICE);
-								// Vibrate for 500 milliseconds
-								v.vibrate(500);
-
-								animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-								lettersGrid.startAnimation(animShake);
-							}
-
-						}
-
-					});
+						});
+					}
 				}
-			}
 
-			break;
+				break;
 
-		case R.id.solution:
-			db.updateHelpState(flagId, "he_solution");
+			case R.id.solution:
+				db.updateHelpState(flagId, "he_solution");
 
-			dialog.showDialog(R.layout.red_dialog, "solutionDlg", flSolution, null);
+				dialog.showDialog(R.layout.red_dialog, "solutionDlg", flSolution, null);
 
-			break;
+				break;
 
 		}
 
@@ -1333,7 +1338,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 //		animation.setDuration(0);
 //		animation.setFillAfter(true);
 //		view.startAnimation(animation);
-		
+
 		view.setRotation(180.0f);
 	}
 
@@ -1346,7 +1351,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 //		animation.setFillAfter(true);
 //		spacesGrid1.startAnimation(animation);
 //		spacesGrid2.startAnimation(animation);	
-		
+
 		spacesGrid1.setRotation(180.0f);
 
 	}
@@ -1354,6 +1359,13 @@ public class GameActivity extends Activity implements OnTouchListener {
 //	public void videoNotLoaded(){
 //		Toast.makeText(this, "Video is loading..." , Toast.LENGTH_SHORT).show();
 //	}
+
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		overridePendingTransition(0, 0);
+	}
 
 }
 

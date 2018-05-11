@@ -224,8 +224,11 @@ public class SettingsActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				sou.playSound(R.raw.buttons);
 				finish();
+				startActivity(intent);
 
 			}
 		});
@@ -276,7 +279,6 @@ public class SettingsActivity extends Activity {
 	public void onBackPressed() {
 		super.onBackPressed();
 		Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		sou.playSound(R.raw.buttons);
 		finish();
@@ -314,5 +316,9 @@ public class SettingsActivity extends Activity {
 	// } while (c.moveToNext());
 	// }
 	// }
-
+	@Override
+	public void onPause() {
+		super.onPause();
+		overridePendingTransition(0, 0);
+	}
 }

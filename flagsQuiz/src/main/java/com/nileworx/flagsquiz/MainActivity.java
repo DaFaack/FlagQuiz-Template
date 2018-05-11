@@ -69,14 +69,14 @@ public class MainActivity extends Activity {
 		double x = Math.pow(wi, 2);
 		double y = Math.pow(hi, 2);
 		double screenInches = Math.sqrt(x + y);
-		
+
 		if (sWidth > 480 && screenInches >= 4 && screenInches <= 5) {
 			setContentView(R.layout.activity_main);
 		} else if (screenInches > 6.5 && screenInches < 9) {
 			setContentView(R.layout.activity_main);
 		} else {
 			setContentView(R.layout.activity_main);
-		}			
+		}
 
 		dialog = new CustomDialog(MainActivity.this);
 		sou = new SoundClass(MainActivity.this);
@@ -105,8 +105,8 @@ public class MainActivity extends Activity {
 //		if (mSharedPreferences.getInt("usingNum", 0) != 100) {
 //			countUsingNumForRating();
 //		}
-		
-		
+
+
 
 		final ImageButton play = (ImageButton) findViewById(R.id.play);
 		play.setOnClickListener(new OnClickListener() {
@@ -118,9 +118,9 @@ public class MainActivity extends Activity {
 					intent.putExtra("FlagId", String.valueOf(db.getNextFlag()));
 					startActivity(intent);
 				} else {
-					dialog.showDialog(R.layout.red_dialog, "finishDlg", getResources().getString(R.string.finishDlg), null);					
+					dialog.showDialog(R.layout.red_dialog, "finishDlg", getResources().getString(R.string.finishDlg), null);
 				}
-				
+
 
 			}
 		});
@@ -175,7 +175,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
 		if (!mSharedPreferences.getString("flagsNum", "0").equals("0")) {
 			String updatesDlgMsg = String.format(getResources().getString(R.string.updatesDlg), mSharedPreferences.getString("flagsNum", "0"));
 			dialog.showDialog(R.layout.blue_dialog, "updatesDlg", updatesDlgMsg, mSharedPreferences.getString("flagsJSON", ""));
@@ -185,7 +185,7 @@ public class MainActivity extends Activity {
 	}
 
 	// =========================================================================================
-	
+
 	public void countUsingNumForRating() {
 
 		e.putInt("usingNum", mSharedPreferences.getInt("usingNum", 0) + 1);
@@ -198,8 +198,8 @@ public class MainActivity extends Activity {
 				dialog.showDialog(R.layout.blue_dialog, "rateDlg", msg, marketLink);
 			}
 		}
-	
-	}	
+
+	}
 
 	// ==============================================================================
 
@@ -234,6 +234,12 @@ public class MainActivity extends Activity {
 				db.addFlags2(cu.getString(cu.getColumnIndex("fl_name")), cu.getString(cu.getColumnIndex("fl_country")), cu.getString(cu.getColumnIndex("fl_city")), cu.getInt(cu.getColumnIndex("fl_order")), cu.getInt(cu.getColumnIndex("fl_web_id")));
 			} while (cu.moveToNext());
 		}
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		overridePendingTransition(0, 0);
 	}
 
 }

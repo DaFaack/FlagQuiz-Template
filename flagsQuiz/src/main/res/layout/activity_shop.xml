@@ -52,100 +52,205 @@
         android:orientation="vertical" >
 
         <RelativeLayout
-            android:id="@+id/videolayout"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp">
+            android:id="@+id/btn_videoAd"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_setting_settings_sml">
 
 
-
-            <Button
-                android:id="@+id/btn_videoAd"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/button_setting_settings_sml"/>
-
+            <ImageView
+                android:id="@+id/resetImage1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/b_shop_ad" />
 
             <TextView
                 android:id="@+id/videoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Watch a Video + 10 Coins"
+                android:text="Watch a Video"
                 android:textColor="#FFF"
                 android:textSize="18sp"
                 android:textStyle="bold" >
             </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="+10"
+                android:layout_marginRight="35dp"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/coins"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:maxWidth="25dp"
+                android:layout_marginRight="5dp"
+                android:maxHeight="25dp"
+                android:layout_centerVertical="true"/>
+
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rate"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp">
+            android:id="@+id/btn_rate_app"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_setting_settings_sml">
 
 
-
-            <Button
-                android:id="@+id/btn_rate_app"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_setting_settings_sml"/>
+                android:id="@+id/rateRL">
 
+            <ImageView
+                android:id="@+id/ratestar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/b_shop_rate" />
 
             <TextView
                 android:id="@+id/rateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Rate with 5 Starts +10 Coins"
+                android:text="Rate with 5 Stars"
                 android:textColor="#FFF"
                 android:textSize="18sp"
                 android:textStyle="bold" >
             </TextView>
+
+            <TextView
+                android:id="@+id/rateint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="+20"
+                android:layout_marginRight="35dp"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/ratecoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/coins"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:maxWidth="25dp"
+                android:layout_marginRight="5dp"
+                android:maxHeight="25dp"
+                android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
         </RelativeLayout>
 
 
         <RelativeLayout
-            android:id="@+id/follow"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp">
+            android:id="@+id/btn_instagram"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_setting_settings_sml">
 
 
-
-            <Button
-                android:id="@+id/btn_instagram"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_setting_settings_sml"/>
+                android:id="@+id/instaRL">
 
+
+
+            <ImageView
+                android:id="@+id/instaicon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/b_shop_instagram" />
 
             <TextView
                 android:id="@+id/instaText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Follow us on Instagram +5 Coins"
+                android:text="Follow us on Instagram"
                 android:textColor="#FFF"
                 android:textSize="18sp"
                 android:textStyle="bold" >
             </TextView>
+
+            <TextView
+                android:id="@+id/instaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="+20"
+                android:layout_marginRight="35dp"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/instacoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/coins"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:maxWidth="25dp"
+                android:layout_marginRight="5dp"
+                android:maxHeight="25dp"
+                android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/share"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp">
+            android:id="@+id/btn_share"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_setting_settings_sml">
 
 
-
-            <Button
-                android:id="@+id/btn_share"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_setting_settings_sml"/>
+                android:id="@+id/shareRL">
+
+
+            <ImageView
+                android:id="@+id/shareicon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/b_shop_share" />
 
 
             <TextView
@@ -153,12 +258,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Share with a Friend +5 Coins"
+                android:text="Share with a Friend"
                 android:textColor="#FFF"
                 android:textSize="18sp"
                 android:textStyle="bold" >
             </TextView>
 
+            <TextView
+                android:id="@+id/shareint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="+10"
+                android:layout_marginRight="35dp"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFF"
+                android:textSize="24sp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/sharecoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/coins"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:maxWidth="25dp"
+                android:layout_marginRight="5dp"
+                android:maxHeight="25dp"
+                android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

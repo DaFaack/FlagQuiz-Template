@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,15 +31,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
-import com.pollfish.interfaces.PollfishClosedListener;
-import com.pollfish.interfaces.PollfishOpenedListener;
-import com.pollfish.interfaces.PollfishSurveyCompletedListener;
-import com.pollfish.interfaces.PollfishSurveyNotAvailableListener;
-import com.pollfish.interfaces.PollfishSurveyReceivedListener;
-import com.pollfish.interfaces.PollfishUserNotEligibleListener;
-import com.pollfish.main.PollFish;
-import com.pollfish.main.PollFish.ParamsBuilder;
-import com.pollfish.constants.Position;
+
 
 
 public class ShopActivity
@@ -47,20 +40,23 @@ public class ShopActivity
     SimpleMethods sm = new SimpleMethods();
 
     //VideoAD
-    Button btn_videoAd;
+    RelativeLayout btn_videoAd;
     private RewardedVideoAd mRewardedVideoAd;
     boolean rewarded, survey_achieved;
 
 
     //rate App
-    Button btn_rate_app;
+    RelativeLayout btn_rate_app;
     ConnectionDetector cd;
     TextView rateText;
 
-    Button btn_insta, btn_share;
+    RelativeLayout btn_insta, btn_share;
     TextView tv_insta, tv_share;
 
     TextView coinfield;
+
+    //setAlpha
+    RelativeLayout rateRL, instaRL, shareRL;
 
 
     SharedPreferences mSharedPreferences;
@@ -84,15 +80,20 @@ public class ShopActivity
 
 
         //initialisation
-        btn_videoAd = (Button)findViewById(R.id.btn_videoAd);
-        btn_rate_app = (Button)findViewById(R.id.btn_rate_app);
-        rateText = (TextView)findViewById(R.id.rateText);
-        btn_insta = (Button)findViewById(R.id.btn_instagram);
-        btn_share = (Button)findViewById(R.id.btn_share);
+        btn_videoAd = (RelativeLayout)findViewById(R.id.btn_videoAd);
+        btn_rate_app = (RelativeLayout)findViewById(R.id.btn_rate_app);
+        btn_insta = (RelativeLayout)findViewById(R.id.btn_instagram);
+        btn_share = (RelativeLayout)findViewById(R.id.btn_share);
         tv_insta = (TextView)findViewById(R.id.instaText);
         tv_share = (TextView)findViewById(R.id.share_text);
         coinfield = (TextView)findViewById(R.id.coinfield);
+        rateText = (TextView) findViewById(R.id.rateText);
 
+
+        //setAlpha
+        rateRL = (RelativeLayout)findViewById(R.id.rateRL);
+        instaRL = (RelativeLayout)findViewById(R.id.instaRL);
+        shareRL = (RelativeLayout)findViewById(R.id.shareRL);
 
         btn_insta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +168,11 @@ public class ShopActivity
 
             }
 
+            @Override
+            public void onRewardedVideoCompleted() {
+
+            }
+
         });
         mRewardedVideoAd.loadAd(getText(R.string.videoAdID).toString(),
                 new AdRequest.Builder().build());
@@ -182,16 +188,19 @@ public class ShopActivity
         if(sm.getBoolean("rate_used", getApplicationContext())){
             btn_rate_app.setBackgroundResource(R.drawable.button_shop_diabled);
             rateText.setAlpha(0.5f);
+            rateRL.setAlpha(0.5f);
         }
 
         if(sm.getBoolean("sharing_used", getApplicationContext())){
             btn_share.setBackgroundResource(R.drawable.button_shop_diabled);
             tv_share.setAlpha(0.5f);
+            instaRL.setAlpha(0.5f);
         }
 
         if(sm.getBoolean("insta_used", getApplicationContext())){
             btn_insta.setBackgroundResource(R.drawable.button_shop_diabled);
             tv_insta.setAlpha(0.5f);
+            shareRL.setAlpha(0.5f);
         }
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/" + getResources().getString(R.string.main_font));
 
@@ -232,7 +241,10 @@ public class ShopActivity
             public void onClick(View v) {
 
                 sou.playSound(R.raw.buttons);
+                Intent intent = new Intent(ShopActivity.this, MainActivity.class);
                 finish();
+                startActivity(intent);
+
 
             }
         });
@@ -257,9 +269,6 @@ public class ShopActivity
             e.commit();
         }
 
-        PollFish.initWith(this, new ParamsBuilder("60086323-aa35-44a2-9324-b6ecc9b44b90")
-                .indicatorPadding(65)
-                .build());
     }
 
     // ==============================================================================
@@ -456,8 +465,6 @@ public class ShopActivity
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(ShopActivity.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         sou.playSound(R.raw.buttons);
         finish();
         startActivity(intent);
@@ -474,7 +481,11 @@ public class ShopActivity
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        overridePendingTransition(0, 0);
+    }
 
 
 //    ------Pollfish stuff ---------------------------------------------------------------------------------

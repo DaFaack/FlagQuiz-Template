@@ -1,5 +1,6 @@
 package com.nileworx.flagsquiz;
 
+import com.google.android.gms.ads.InterstitialAd;
 import com.nileworx.flagsquiz.R;
 
 import android.app.Activity;
@@ -33,6 +34,7 @@ public class CustomDialog {
 
 	SharedPreferences mSharedPreferences;
 	Editor editor;
+	public InterstitialAd mInterstitialAd;
 
 	DAO db;
 	Cursor c;
