@@ -148,11 +148,11 @@
                 android:src="@drawable/gesetzt_klein" />
 
             <TextView
-                android:id="@+id/impressum_text"
+                android:id="@+id/impressumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Reset Game"
+                android:text="Impressum"
                 android:textColor="#FFF"
                 android:textSize="18sp"
                 android:textStyle="bold" >

@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
@@ -43,12 +44,31 @@ public class SettingsActivity extends Activity {
 	CustomDialog dialog;
 	private long mLastClickTime = 0;
 
+	TextView soundText, vibrateText, shareText, resetText, impressumText;
+
+	public Typeface tf;
+
 	// =========================================================================================
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
+
+		tf = Typeface.createFromAsset(getAssets(), "fonts/HOBOSTD.OTF");
+
+		soundText = (TextView)findViewById(R.id.soundText);
+		vibrateText = (TextView)findViewById(R.id.vibrateText);
+		shareText = (TextView)findViewById(R.id.shareText);
+		resetText = (TextView)findViewById(R.id.resetText);
+		impressumText = (TextView)findViewById(R.id.impressumText);
+
+
+		soundText.setTypeface(tf);
+		vibrateText.setTypeface(tf);
+		shareText.setTypeface(tf);
+		resetText.setTypeface(tf);
+		impressumText.setTypeface(tf);
 
 		dialog = new CustomDialog(SettingsActivity.this);
 		sou = new SoundClass(SettingsActivity.this);
@@ -201,8 +221,7 @@ public class SettingsActivity extends Activity {
 
 
 		final RelativeLayout impressum = (RelativeLayout) findViewById(R.id.impressum);
-		final TextView impressum_text = (TextView) findViewById(R.id.impressum_text);
-		impressum_text.setText(getResources().getString(R.string.impressumBtn));
+		final TextView impressum_text = (TextView) findViewById(R.id.impressumText);
 
 		impressum.setOnClickListener(new OnClickListener() {
 			@Override

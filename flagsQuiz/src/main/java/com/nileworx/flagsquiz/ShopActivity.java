@@ -43,6 +43,7 @@ public class ShopActivity
     RelativeLayout btn_videoAd;
     private RewardedVideoAd mRewardedVideoAd;
     boolean rewarded, survey_achieved;
+    TextView videoText;
 
 
     //rate App
@@ -67,6 +68,8 @@ public class ShopActivity
     DAO db;
     Cursor c;
 
+    public Typeface tf;
+
     SoundClass sou;
     CustomDialog dialog;
     private long mLastClickTime = 0;
@@ -77,7 +80,7 @@ public class ShopActivity
         setContentView(R.layout.activity_shop);
 
 
-
+        tf = Typeface.createFromAsset(getAssets(), "fonts/HOBOSTD.OTF");
 
         //initialisation
         btn_videoAd = (RelativeLayout)findViewById(R.id.btn_videoAd);
@@ -88,7 +91,12 @@ public class ShopActivity
         tv_share = (TextView)findViewById(R.id.share_text);
         coinfield = (TextView)findViewById(R.id.coinfield);
         rateText = (TextView) findViewById(R.id.rateText);
+        videoText = (TextView)findViewById(R.id.videoText);
 
+        rateText.setTypeface(tf);
+        tv_insta.setTypeface(tf);
+        tv_share.setTypeface(tf);
+        videoText.setTypeface(tf);
 
         //setAlpha
         rateRL = (RelativeLayout)findViewById(R.id.rateRL);
