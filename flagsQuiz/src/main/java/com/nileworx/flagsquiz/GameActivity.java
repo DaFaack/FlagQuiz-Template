@@ -446,7 +446,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 					@Override
 					public void onRewardedVideoAdClosed() {
 						if(videoAdHelper){
-							db.addTotalCoins(20);
+							db.addTotalCoins(Integer.parseInt(getText(R.string.coins_for_videeoad).toString() ));
 							coinsValue.setText(String.valueOf(getCoinsNumber()));
 							sm.playSound(R.raw.rewardsound, getApplicationContext());
 						}

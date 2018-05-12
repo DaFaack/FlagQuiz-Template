@@ -17,18 +17,18 @@
 
 
     <!-- =========================== COINS =========================== -->
-    <!--coins settings-->
-    <string name="coins_for_videeoad">10</string>
-    <string name="coins_for_rating">10</string>
-    <string name="coins_for_insta">10</string>
-    <string name="coins_for_share">10</string>
+    <!--coins shop-->
+    <string name="coins_for_videeoad">15</string>
+    <string name="coins_for_rating">25</string>
+    <string name="coins_for_insta">15</string>
+    <string name="coins_for_share">15</string>
 
     <!--coins gameactivtiy/hints-->
-    <string name="coins_for_right_answer">11</string>
+    <string name="coins_for_right_answer">5</string>
     <!--nimmt wert für video von coins settings-->
-    <string name="coin_costs_explosion">11</string>
-    <string name="coin_costs_showletter">22</string>
-    <string name="coin_costs_solution">33</string>
+    <string name="coin_costs_explosion">10</string>
+    <string name="coin_costs_showletter">5</string>
+    <string name="coin_costs_solution">30</string>
 
     <!-- =========================== Language =========================== -->
 
@@ -58,7 +58,7 @@
     <string name="correctDlg">Congratulations!</string>
     <string name="wrongDlg">Wrong!</string>
     <string name="rateDlg">Please rate our app on google play!</string>
-    <string name="videoAdDlg">You want to see a video ad to get 20 free coins?</string>
+    <string name="videoAdDlg">You want to see a video ad to get 15 free coins?</string>
     <string name="resetDlg">After reset you will lose your score, coins and answers. Continue?</string>
     <string name="exitDlg">Are you sure you want to exit?</string>
     <string name="finishDlg">Great Job!\nYou have finished the game :)</string>
