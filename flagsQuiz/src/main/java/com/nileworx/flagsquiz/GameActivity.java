@@ -918,9 +918,9 @@ public class GameActivity extends Activity implements OnTouchListener {
 	public void getHelp(final int viewId) {
 		int remainCoins = Integer.parseInt(coinsValue.getText().toString());
 		if (isHelpUsed(viewId) != 1) {
-			boolean noHideCoins = (viewId == R.id.hide && remainCoins < 11);
-			boolean noLetterCoins = (viewId == R.id.letter && remainCoins < 22);
-			boolean noSolutionCoins = (viewId == R.id.solution && remainCoins < 33);
+			boolean noHideCoins = (viewId == R.id.hide && remainCoins < Integer.parseInt(getText(R.string.coin_costs_explosion).toString()));
+			boolean noLetterCoins = (viewId == R.id.letter && remainCoins < Integer.parseInt(getText(R.string.coin_costs_showletter).toString()));
+			boolean noSolutionCoins = (viewId == R.id.solution && remainCoins < Integer.parseInt(getText(R.string.coin_costs_solution).toString()));
 
 			if (noHideCoins || noLetterCoins || noSolutionCoins) {
 

@@ -54,7 +54,7 @@ public class ShopActivity
     RelativeLayout btn_insta, btn_share;
     TextView tv_insta, tv_share;
 
-    TextView coinfield;
+    TextView coinfield, tv_coins_for_videoad, tv_coins_for_rate, tv_coins_for_insta, tv_coins_for_share;
 
     //setAlpha
     RelativeLayout rateRL, instaRL, shareRL;
@@ -80,7 +80,7 @@ public class ShopActivity
         setContentView(R.layout.activity_shop);
 
 
-        tf = Typeface.createFromAsset(getAssets(), "fonts/HOBOSTD.OTF");
+        tf = Typeface.createFromAsset(getAssets(), "fonts/burbank.otf");
 
         //initialisation
         btn_videoAd = (RelativeLayout)findViewById(R.id.btn_videoAd);
@@ -92,6 +92,22 @@ public class ShopActivity
         coinfield = (TextView)findViewById(R.id.coinfield);
         rateText = (TextView) findViewById(R.id.rateText);
         videoText = (TextView)findViewById(R.id.videoText);
+
+        tv_coins_for_videoad = findViewById(R.id.coin_cost_videoad);
+        tv_coins_for_rate = findViewById(R.id.coin_cost_rate);
+        tv_coins_for_insta = findViewById(R.id.coin_cost_insta);
+        tv_coins_for_share = findViewById(R.id.coin_cost_share);
+
+        tv_coins_for_videoad.setText("+" + getText(R.string.coins_for_videeoad));
+        tv_coins_for_rate.setText("+" + getText(R.string.coins_for_rating));
+        tv_coins_for_insta.setText("+" + getText( R.string.coins_for_insta));
+        tv_coins_for_share.setText("+" + getText(R.string.coins_for_share));
+
+        tv_coins_for_videoad.setTypeface(tf);
+        tv_coins_for_rate.setTypeface(tf);
+        tv_coins_for_insta.setTypeface(tf);
+        tv_coins_for_share.setTypeface(tf);
+
 
         rateText.setTypeface(tf);
         tv_insta.setTypeface(tf);
@@ -250,9 +266,9 @@ public class ShopActivity
             public void onClick(View v) {
 
                 sou.playSound(R.raw.buttons);
-                Intent intent = new Intent(ShopActivity.this, MainActivity.class);
-                finish();
-                startActivity(intent);
+
+
+                ShopActivity.super.onBackPressed();
 
 
             }
@@ -290,8 +306,6 @@ public class ShopActivity
             return false;
         }
     }
-
-
 
 
 
@@ -495,9 +509,6 @@ public class ShopActivity
         super.onPause();
         overridePendingTransition(0, 0);
     }
-
-
-//    ------Pollfish stuff ---------------------------------------------------------------------------------
 
 
 

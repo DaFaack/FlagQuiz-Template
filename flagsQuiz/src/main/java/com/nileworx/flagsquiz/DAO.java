@@ -176,7 +176,7 @@ public class DAO {
 
 	// ==============================================================================
 
-	public void resetGame() {
+	public void resetGame(Context ctx) {
 		open();
 
 		ContentValues flagsValues = new ContentValues();
@@ -187,7 +187,7 @@ public class DAO {
 		database.update(TABLE_FLAGS, flagsValues, null, null);
 
 		ContentValues coinsValues = new ContentValues();
-		coinsValues.put(TOTAL_COINS, 25);
+		coinsValues.put(TOTAL_COINS, ctx.getResources().getString(R.string.coins_at_start));
 		coinsValues.put(USED_COINS, 0);
 		database.update(TABLE_COINS, coinsValues, null, null);
 

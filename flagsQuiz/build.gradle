@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.nileworx.flagsquiz"
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 25
     }
 
     buildTypes {
@@ -25,8 +25,6 @@ dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
     implementation 'com.google.android.gms:play-services-ads:15.0.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'com.pollfish:pollfish:+:googleplayRelease@aar'
 
 
 }

@@ -80,10 +80,11 @@
             </TextView>
 
             <TextView
+                android:id="@+id/coin_cost_videoad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="+10"
+                android:text="(error!)"
                 android:layout_marginRight="35dp"
                 android:layout_alignParentRight="true"
                 android:textColor="#FFF"
@@ -138,11 +139,11 @@
             </TextView>
 
             <TextView
-                android:id="@+id/rateint"
+                android:id="@+id/coin_cost_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="+20"
+                android:text="(error!)"
                 android:layout_marginRight="35dp"
                 android:layout_alignParentRight="true"
                 android:textColor="#FFF"
@@ -202,11 +203,11 @@
             </TextView>
 
             <TextView
-                android:id="@+id/instaint"
+                android:id="@+id/coin_cost_insta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="+20"
+                android:text="(error!)"
                 android:layout_marginRight="35dp"
                 android:layout_alignParentRight="true"
                 android:textColor="#FFF"
@@ -265,11 +266,11 @@
             </TextView>
 
             <TextView
-                android:id="@+id/shareint"
+                android:id="@+id/coin_cost_share"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="+10"
+                android:text="(error!)"
                 android:layout_marginRight="35dp"
                 android:layout_alignParentRight="true"
                 android:textColor="#FFF"

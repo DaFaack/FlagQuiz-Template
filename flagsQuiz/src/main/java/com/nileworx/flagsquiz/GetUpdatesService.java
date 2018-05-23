@@ -112,7 +112,7 @@ public class GetUpdatesService extends IntentService {
 			CharSequence title = context.getResources().getString(R.string.downloadingInitializing);
 
 			contentView = new RemoteViews(getPackageName(), R.layout.download_progress);
-			contentView.setImageViewResource(R.id.status_icon, R.drawable.app_icon_medium);
+//			contentView.setImageViewResource(R.id.status_icon, R.drawable.app_icon_medium);
 			contentView.setTextViewText(R.id.status_text, title);
 			contentView.setProgressBar(R.id.status_progress, 100, 0, false);
 

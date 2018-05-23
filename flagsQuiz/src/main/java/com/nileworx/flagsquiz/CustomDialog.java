@@ -274,7 +274,7 @@ public class CustomDialog {
 			@Override
 			public void onClick(View v) {
 				sou.playSound(R.raw.buttons);
-				db.resetGame();
+				db.resetGame(context);
 				Intent intent = ((Activity) context).getIntent();
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

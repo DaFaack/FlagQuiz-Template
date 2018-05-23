@@ -22,7 +22,7 @@
             android:text=""
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#FFF"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:typeface="sans"
             android:visibility="visible" />
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/redDlg"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-13dp"
+
         android:orientation="horizontal"
         android:visibility="gone" >
 
